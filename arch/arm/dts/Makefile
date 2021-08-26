@@ -827,15 +827,8 @@ dtb-$(CONFIG_ARCH_MX7ULP) += imx7ulp-com.dtb \
 	imx7ulp-evk-qspi.dtb
 
 dtb-$(CONFIG_ARCH_IMX8) += \
-	fsl-imx8qm-apalis.dtb \
-	fsl-imx8qm-mek.dtb \
 	fsl-imx8qm-custom.dtb \
-	fsl-imx8qm-ddr4-val.dtb \
-	fsl-imx8qm-lpddr4-val.dtb \
-	fsl-imx8qm-mek-cockpit-a53.dtb \
-	fsl-imx8qm-mek-cockpit-a72.dtb \
-	fsl-imx8qm-mek-xen.dtb \
-	imx8qm-rom7720-a1.dtb \
+	fsl-bridgestone.dtb 
 
 dtb-$(CONFIG_ARCH_IMX8M) += \
 	imx8mm-evk.dtb \
