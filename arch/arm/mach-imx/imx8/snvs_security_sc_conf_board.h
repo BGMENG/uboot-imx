@@ -10,6 +10,8 @@
 #include "snvs_security_sc_conf_8qm_mek.h"
 #elif CONFIG_TARGET_IMX8QM_CUSTOM
 #include "snvs_security_sc_conf_8qm_custom.h"
+#elif CONFIG_TARGET_BES_BGW_0002_A
+#include "snvs_security_sc_conf_8qm_BES_BGW_0002_A.h"
 #elif CONFIG_TARGET_IMX8QXP_MEK
 #include "snvs_security_sc_conf_8qxp_mek.h"
 #elif CONFIG_TARGET_IMX8DXL_EVK

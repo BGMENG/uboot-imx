@@ -828,7 +828,7 @@ dtb-$(CONFIG_ARCH_MX7ULP) += imx7ulp-com.dtb \
 
 dtb-$(CONFIG_ARCH_IMX8) += \
 	fsl-imx8qm-custom.dtb \
-	fsl-bridgestone.dtb 
+	fsl-imx8qm-BES_BGW_0002_A.dtb 
 
 dtb-$(CONFIG_ARCH_IMX8M) += \
 	imx8mm-evk.dtb \

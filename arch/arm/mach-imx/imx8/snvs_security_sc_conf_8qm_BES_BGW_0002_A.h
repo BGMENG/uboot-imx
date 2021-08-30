@@ -3,8 +3,8 @@
  * Copyright 2020 NXP.
  */
 
-#ifndef SNVS_SECURITY_SC_CONF_8QM_BRIDGESTONE_H_
-#define SNVS_SECURITY_SC_CONF_8QM_BRIDGESTONE_H_
+#ifndef SNVS_SECURITY_SC_CONF_8QM_BES_BGW_0002_A_H_
+#define SNVS_SECURITY_SC_CONF_8QM_BES_BGW_0002_A_H_
 
 #include "snvs_security_sc_conf.h"
 
@@ -154,4 +154,4 @@ static __maybe_unused struct tamper_pin_cfg tamper_pin_list_passive_gnd_config[]
 static __maybe_unused struct tamper_pin_cfg tamper_pin_list_active_config[] = {
 };
 
-#endif /* SNVS_SECURITY_SC_CONF_8QM_CUSTOM_H_ */
+#endif /* SNVS_SECURITY_SC_CONF_8QM_BES_BGW_0002_A_H_ */

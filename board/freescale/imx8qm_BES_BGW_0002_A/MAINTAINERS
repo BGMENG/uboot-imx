@@ -1,0 +1,6 @@
+i.MX8QM Custom BOARD
+M:	E Burley <eburley@bgmeng.com>
+S:	Maintained
+F:	board/freescale/imx8qm_BES_BGW_0002_A/
+F:	include/configs/imx8qm_BES_BGW_0002_A.h
+F:	configs/imx8qm_BES_BGW_0002_A_defconfig

@@ -8,8 +8,8 @@
 #include "fsl-imx8qm.dtsi"
 
 / {
-	model = "NXP i.MX8QM Bridgestone";
-	compatible = "fsl,bridgestone", "fsl,imx8qm";
+	model = "NXP i.MX8QM BES_BGW_0002_A";
+	compatible = "fsl,imx8qm-BES_BGW_0002_A", "fsl,imx8qm";
 
 	aliases {
 		gpio8 = &max7322;
@@ -240,7 +240,7 @@
     pinctrl-names = "default_iomuxc";
     pinctrl-0 = <&pinctrl_hog>;
 
-    bridgestone {
+    imx8qm-BES_BGW_0002_A {
         pinctrl_hog: hoggrp {
             fsl,pins = <
                 SC_P_ENET1_MDC_LSIO_GPIO4_IO18              0x00000060

@@ -92,7 +92,7 @@ config TARGET_IMX8QM_CUSTOM
 	select ARCH_MISC_INIT
 	select SPL_CRYPTO_SUPPORT if SPL
 
-config TARGET_BRIDGESTONE
+config TARGET_IMX8QM_BES_BGW_0002_A
 	bool "Support i.MX8QM Custom board"
 	select BOARD_LATE_INIT
 	select IMX8QM
@@ -101,12 +101,11 @@ config TARGET_BRIDGESTONE
 	select ARCH_MISC_INIT
 	select SPL_CRYPTO_SUPPORT if SPL
 
-
 endchoice
 
 source "board/freescale/imx8qm_mek/Kconfig"
 source "board/freescale/imx8qm_custom/Kconfig"
-source "board/freescale/bridgestone/Kconfig"
+source "board/freescale/imx8qm_BES_BGW_0002_A/Kconfig"
 source "board/toradex/apalis-imx8/Kconfig"
 
 config IMX_SNVS_SEC_SC
