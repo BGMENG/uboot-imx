@@ -94,7 +94,7 @@ static void board_gpio_init(void)
 #if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A) || defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY)
 	int ret;
 	struct gpio_desc desc;
-
+	/* LED 0 */
 	ret = dm_gpio_lookup_name("GPIO2_14", &desc);
 	if (ret) {
 		printf("%s lookup GPIO@2_14 failed ret = %d\n", __func__, ret);
@@ -109,7 +109,7 @@ static void board_gpio_init(void)
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-
+	/* LED 1 */
 	ret = dm_gpio_lookup_name("GPIO2_15", &desc);
 	if (ret) {
 		printf("%s lookup GPIO@2_15 failed ret = %d\n", __func__, ret);
@@ -124,8 +124,7 @@ static void board_gpio_init(void)
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-
-
+	/* V3_8_PER */
 	ret = dm_gpio_lookup_name("GPIO2_25", &desc);
 	if (ret) {
 		printf("%s lookup GPIO@2_25 failed ret = %d\n", __func__, ret);
@@ -140,63 +139,65 @@ static void board_gpio_init(void)
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-	ret = dm_gpio_lookup_name("GPIO2_25", &desc);
+	/* V3_3_PER */
+	ret = dm_gpio_lookup_name("GPIO2_26", &desc);
 	if (ret) {
-		printf("%s lookup GPIO@2_25 failed ret = %d\n", __func__, ret);
+		printf("%s lookup GPIO@2_26 failed ret = %d\n", __func__, ret);
 		return;
 	}
 
-	ret = dm_gpio_request(&desc, "bb_3v3_2");
+	ret = dm_gpio_request(&desc, "v3_3_per");
 	if (ret) {
-		printf("%s request bb_3v3_2 failed ret = %d\n", __func__, ret);
+		printf("%s request 3v3_per failed ret = %d\n", __func__, ret);
 		return;
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-	ret = dm_gpio_lookup_name("GPIO4_23", &desc);
+	/* V5_0_PER */
+	ret = dm_gpio_lookup_name("GPIO2_24", &desc);
 	if (ret) {
-		printf("%s lookup GPIO@4_23 failed ret = %d\n", __func__, ret);
+		printf("%s lookup GPIO@2_24 failed ret = %d\n", __func__, ret);
 		return;
 	}
 
-	ret = dm_gpio_request(&desc, "bb_3v3_3");
+	ret = dm_gpio_request(&desc, "v5_0_per");
 	if (ret) {
-		printf("%s request bb_3v3_3 failed ret = %d\n", __func__, ret);
+		printf("%s request v5_0_per failed ret = %d\n", __func__, ret);
 		return;
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
 	/* enable LVDS SAS boards */
-	ret = dm_gpio_lookup_name("GPIO1_6", &desc);
-	if (ret) {
-		printf("%s lookup GPIO1_6 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	ret = dm_gpio_request(&desc, "lvds_enable");
-	if (ret) {
-		printf("%s request lvds_enable failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-
-	/* enable MIPI SAS boards */
-	ret = dm_gpio_lookup_name("GPIO1_7", &desc);
-	if (ret) {
-		printf("%s lookup GPIO1_7 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	ret = dm_gpio_request(&desc, "mipi_enable");
-	if (ret) {
-		printf("%s request mipi_enable failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+//	ret = dm_gpio_lookup_name("GPIO1_6", &desc);
+//	if (ret) {
+//		printf("%s lookup GPIO1_6 failed ret = %d\n", __func__, ret);
+//		return;
+//	}
+//
+//	ret = dm_gpio_request(&desc, "lvds_enable");
+//	if (ret) {
+//		printf("%s request lvds_enable failed ret = %d\n", __func__, ret);
+//		return;
+//	}
+//
+//	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+//
+//	/* enable MIPI SAS boards */
+//	ret = dm_gpio_lookup_name("GPIO1_7", &desc);
+//	if (ret) {
+//		printf("%s lookup GPIO1_7 failed ret = %d\n", __func__, ret);
+//		return;
+//	}
+//
+//	ret = dm_gpio_request(&desc, "mipi_enable");
+//	if (ret) {
+//		printf("%s request mipi_enable failed ret = %d\n", __func__, ret);
+//		return;
+//	}
+//
+//	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 #endif
 
 }
