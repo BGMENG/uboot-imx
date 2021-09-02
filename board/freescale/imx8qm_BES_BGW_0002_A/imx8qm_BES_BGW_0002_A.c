@@ -109,6 +109,7 @@ static void board_gpio_init(void)
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
+
 	ret = dm_gpio_lookup_name("GPIO2_15", &desc);
 	if (ret) {
 		printf("%s lookup GPIO@2_15 failed ret = %d\n", __func__, ret);
@@ -123,23 +124,25 @@ static void board_gpio_init(void)
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-	ret = dm_gpio_lookup_name("GPIO4_20", &desc);
+
+
+	ret = dm_gpio_lookup_name("GPIO2_25", &desc);
 	if (ret) {
-		printf("%s lookup GPIO@4_20 failed ret = %d\n", __func__, ret);
+		printf("%s lookup GPIO@2_25 failed ret = %d\n", __func__, ret);
 		return;
 	}
 
-	ret = dm_gpio_request(&desc, "bb_3v3_1");
+	ret = dm_gpio_request(&desc, "v3_8_per");
 	if (ret) {
-		printf("%s request bb_3v3_1 failed ret = %d\n", __func__, ret);
+		printf("%s request v3_8_per failed ret = %d\n", __func__, ret);
 		return;
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-	ret = dm_gpio_lookup_name("GPIO4_24", &desc);
+	ret = dm_gpio_lookup_name("GPIO2_25", &desc);
 	if (ret) {
-		printf("%s lookup GPIO@4_24 failed ret = %d\n", __func__, ret);
+		printf("%s lookup GPIO@2_25 failed ret = %d\n", __func__, ret);
 		return;
 	}
 
