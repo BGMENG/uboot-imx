@@ -100,6 +100,12 @@
 			default-state = "on";
 			output-high;
 		};
+		wifi_pdn{
+			label = "wifi_pdn";
+			enable-gpios = <&gpio2 06 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+			output-high;
+		};
 	};
 
 	regulators {
