@@ -45,6 +45,7 @@
                         label = "wifi_led";
                         gpios = <&gpio2 19 GPIO_ACTIVE_HIGH>;
                         default-state = "off";
+                        linux,default-trigger = "mmc2";
                 };
                 ble_led {
                         label = "ble_led";
@@ -88,24 +89,24 @@
 			default-state = "on";
 			output-high;
 		};
-		wifi_1v8_en{
-			label = "wifi_1v8_en";
-			enable-gpios = <&gpio2 28 GPIO_ACTIVE_HIGH>;
-			default-state = "on";
-			output-high;
-		};
-		wifi_vbat_en{
-			label = "wifi_vbat_en";
-			enable-gpios = <&gpio2 29 GPIO_ACTIVE_HIGH>;
-			default-state = "on";
-			output-high;
-		};
-		wifi_pdn{
-			label = "wifi_pdn";
-			enable-gpios = <&gpio2 06 GPIO_ACTIVE_HIGH>;
-			default-state = "on";
-			output-high;
-		};
+//		wifi_1v8_en{
+//			label = "wifi_1v8_en";
+//			enable-gpios = <&gpio2 28 GPIO_ACTIVE_HIGH>;
+//			default-state = "on";
+//			output-high;
+//		};
+//		wifi_vbat_en{
+//			label = "wifi_vbat_en";
+//			enable-gpios = <&gpio2 29 GPIO_ACTIVE_HIGH>;
+//			default-state = "on";
+//			output-high;
+//		};
+//		wifi_pdn{
+//			label = "wifi_pdn";
+//			enable-gpios = <&gpio2 06 GPIO_ACTIVE_HIGH>;
+//			default-state = "on";
+//			output-high;
+//		};
 	};
 
 	regulators {

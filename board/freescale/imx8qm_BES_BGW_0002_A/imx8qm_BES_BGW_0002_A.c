@@ -168,7 +168,7 @@ static void board_gpio_init(void)
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-
+#if 0
 	/* WIFI_VIO_EN */
 	ret = dm_gpio_lookup_name("GPIO2_27", &desc);
 	if (ret) {
@@ -225,7 +225,7 @@ static void board_gpio_init(void)
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-
+#endif
 	/* enable LVDS SAS boards */
 //	ret = dm_gpio_lookup_name("GPIO1_6", &desc);
 //	if (ret) {
