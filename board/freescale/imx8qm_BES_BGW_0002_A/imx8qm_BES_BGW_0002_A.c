@@ -83,12 +83,12 @@ int board_early_init_f(void)
 }
 
 
-#define LED_0 IMX_GPIO_NR(2, 14)
-#define LED_1 IMX_GPIO_NR(2, 15)
+//#define LED_0 IMX_GPIO_NR(2, 14)
+//#define LED_1 IMX_GPIO_NR(2, 15)
 
-#define BB_GPIO_3V3_1 IMX_GPIO_NR(4, 20)
-#define BB_GPIO_3V3_2 IMX_GPIO_NR(4, 24)
-#define BB_GPIO_3V3_3 IMX_GPIO_NR(4, 23)
+//#define BB_GPIO_3V3_1 IMX_GPIO_NR(4, 20)
+//#define BB_GPIO_3V3_2 IMX_GPIO_NR(4, 24)
+//#define BB_GPIO_3V3_3 IMX_GPIO_NR(4, 23)
 
 static void board_gpio_init(void)
 {
@@ -184,6 +184,9 @@ static void board_gpio_init(void)
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+
+udelay(500);
+
 	/* WIFI_VBAT_EN */
 	ret = dm_gpio_lookup_name("GPIO2_29", &desc);
 	if (ret) {
@@ -196,8 +199,10 @@ static void board_gpio_init(void)
 		printf("%s request wifi_vbat_en failed ret = %d\n", __func__, ret);
 		return;
 	}
-udelay(1500);
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+
+udelay(1500);
+
 	/* WIFI_1V8_EN */
 	ret = dm_gpio_lookup_name("GPIO2_28", &desc);
 	if (ret) {
@@ -212,7 +217,9 @@ udelay(1500);
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+
 udelay(500);
+	
 	/* WIFI_PDn */
 	ret = dm_gpio_lookup_name("GPIO2_06", &desc);
 	if (ret) {
