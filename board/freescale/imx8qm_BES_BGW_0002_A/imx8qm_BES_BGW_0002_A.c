@@ -22,6 +22,7 @@
 #include <asm/arch/sys_proto.h>
 #include "../common/tcpc.h"
 #include "command.h"
+#include <linux/delay.h>
 
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -195,7 +196,7 @@ static void board_gpio_init(void)
 		printf("%s request wifi_vbat_en failed ret = %d\n", __func__, ret);
 		return;
 	}
-
+udelay(1500);
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 	/* WIFI_1V8_EN */
 	ret = dm_gpio_lookup_name("GPIO2_28", &desc);
@@ -211,6 +212,7 @@ static void board_gpio_init(void)
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+udelay(500);
 	/* WIFI_PDn */
 	ret = dm_gpio_lookup_name("GPIO2_06", &desc);
 	if (ret) {
@@ -346,9 +348,9 @@ extern uint32_t _end_ofs;
 int board_late_init(void)
 {
 	char *fdt_file;
-#if !defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY) && !defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY)
-	bool m4_booted;
-#endif
+//#if !defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY) && !defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY)
+//	bool m4_booted;
+//#endif
 
 	build_info();
 
@@ -365,17 +367,17 @@ int board_late_init(void)
 	fdt_file = env_get("fdt_file");
 
 	if (fdt_file && !strcmp(fdt_file, "undefined")) {
-#if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY)
-		env_set("fdt_file", "imx8qm-BES_BGW_0002_A-cockpit-ca53.dtb");
-#elif defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY)
-		env_set("fdt_file", "imx8qm-BES_BGW_0002_A-cockpit-ca72.dtb");
-#else
-		m4_booted = m4_parts_booted();
-		if (m4_booted)
-			env_set("fdt_file", "imx8qm-BES_BGW_0002_A-rpmsg.dtb");
-		else
+//#if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY)
+//		env_set("fdt_file", "imx8qm-BES_BGW_0002_A-cockpit-ca53.dtb");
+//#elif defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY)
+//		env_set("fdt_file", "imx8qm-BES_BGW_0002_A-cockpit-ca72.dtb");
+//#else
+//		m4_booted = m4_parts_booted();
+//		if (m4_booted)
+//			env_set("fdt_file", "imx8qm-BES_BGW_0002_A-rpmsg.dtb");
+//		else
 			env_set("fdt_file", "imx8qm-BES_BGW_0002_A.dtb");
-#endif
+//#endif
 	}
 
 #ifdef CONFIG_ENV_IS_IN_MMC
