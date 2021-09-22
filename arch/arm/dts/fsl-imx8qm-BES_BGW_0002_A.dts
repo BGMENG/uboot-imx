@@ -266,22 +266,25 @@ pinctrl_gnss_reset: gnssresetgrp {
 
         pinctrl_i2c0: i2c0grp {
             fsl,pins = <
-                SC_P_HDMI_TX0_TS_SCL_DMA_I2C0_SCL           0x06000021
-                SC_P_HDMI_TX0_TS_SDA_DMA_I2C0_SDA           0x06000021
+                SC_P_HDMI_TX0_TS_SCL_DMA_I2C0_SCL           0x00000040
+                SC_P_HDMI_TX0_TS_SDA_DMA_I2C0_SDA           0x00000020
             >;
         };
+
         pinctrl_i2c4: i2c4grp {
             fsl,pins = <
                 SC_P_ENET0_MDC_DMA_I2C4_SCL                 0x00000040
                 SC_P_ENET0_MDIO_DMA_I2C4_SDA                0x00000020
             >;
         };
+
         pinctrl_lpuart0: lpuart0grp {
             fsl,pins = <
                 SC_P_UART0_RX_DMA_UART0_RX                  0x06000020
                 SC_P_UART0_TX_DMA_UART0_TX                  0x06000020
             >;
         };
+
         pinctrl_lpuart1: lpuart1grp {
             fsl,pins = <
                 SC_P_UART1_CTS_B_DMA_UART1_CTS_B            0x06000020
@@ -341,10 +344,10 @@ pinctrl_gnss_reset: gnssresetgrp {
 
         pinctrl_bt_uart: bt_uartgrp {
             fsl,pins = <
-                SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x00000040
                 SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x00000040
                 SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000040
                 SC_P_ENET0_RGMII_TXD3_DMA_UART3_RTS_B       0x00000040
+                SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x00000040
             >;
         };
     };
@@ -396,18 +399,18 @@ pinctrl_gnss_reset: gnssresetgrp {
 	pinctrl-0 = <&pinctrl_i2c0>;
 	status = "okay";
 
-	/* U-Blox NEO-M8L GNSS (Does the NEO-M8 driver work for this?) */
-	gnss@42 {
-		compatible = "u-blox,neo-m8", "fsl,imx35-gpio";
-		reg = <0x42>; // reg = DDC (i2c) slave address
-		vcc-supply = <&pinctrl_v33>;
-
-		gpio-controller;
-		#gpio-cells = <2>;
-		pinctrl-0 = <&pinctrl_gnss_reset>;
-		pinctrl-1 = <&pinctrl_gnss_dir>;
+//	/* U-Blox NEO-M8L GNSS (Does the NEO-M8 driver work for this?) */
+//	gnss@42 {
+//		compatible = "u-blox,neo-m8", "fsl,imx35-gpio";
+//		reg = <0x42>; // reg = DDC (i2c) slave address
+//		vcc-supply = <&pinctrl_v33>;
+//
+//		gpio-controller;
+//		#gpio-cells = <2>;
+//		pinctrl-0 = <&pinctrl_gnss_reset>;
+//		pinctrl-1 = <&pinctrl_gnss_dir>;
 //		reset-gpios = <&pinctrl_gnss_reset>;
-	};
+//	};
 };
 
 &i2c1 {
@@ -431,12 +434,12 @@ pinctrl_gnss_reset: gnssresetgrp {
 	status = "okay";
 	
 	/* The lsm6dsl uses the lsm6dsx driver */
-	lsm6dsl@6b{
-		compatible = "st,lsm6dsl";
-		reg = <0x6B>;
-		interrupt-parent = <&gpio4>;
-		interrupts = <17 IRQ_TYPE_LEVEL_HIGH>, <18 IRQ_TYPE_LEVEL_HIGH>;
-	};
+//	lsm6dsl@6b{
+//		compatible = "st,lsm6dsl";
+//		reg = <0x6B>;
+//		interrupt-parent = <&gpio4>;
+//		interrupts = <17 IRQ_TYPE_LEVEL_HIGH>, <18 IRQ_TYPE_LEVEL_HIGH>;
+//	};
 };
 
 &lpuart0 { /* console */
