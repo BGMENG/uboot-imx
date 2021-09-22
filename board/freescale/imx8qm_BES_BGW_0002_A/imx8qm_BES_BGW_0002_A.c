@@ -235,6 +235,21 @@ udelay(500);
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 #endif
+	/* GNSS Reset  */
+	ret = dm_gpio_lookup_name("GPIO2_23", &desc);
+	if (ret) {
+		printf("%s lookup GPIO@2_23 failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+	ret = dm_gpio_request(&desc, "gnss_reset");
+	if (ret) {
+		printf("%s request gnss_reset failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+
 	/* enable LVDS SAS boards */
 //	ret = dm_gpio_lookup_name("GPIO1_6", &desc);
 //	if (ret) {
