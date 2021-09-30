@@ -75,6 +75,14 @@ int board_early_init_f(void)
 	ret = sc_pm_setup_uart(SC_R_UART_0, rate);
 	if (ret)
 		return ret;
+	/* Set UART1 clock root to 80 MHz */
+	ret = sc_pm_setup_uart(SC_R_UART_1, rate);
+	if (ret)
+		return ret;
+	/* Set UART3 clock root to 80 MHz */
+	ret = sc_pm_setup_uart(SC_R_UART_3, rate);
+	if (ret)
+		return ret;
 #endif	/* CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY */
 
 	setup_iomux_uart();
@@ -321,6 +329,8 @@ void board_quiesce_devices(void)
 		"PD_UART2_RX",
 #else
 		"dma_lpuart0",
+		"dma_lpuart1",
+		"dma_lpuart3",
 #endif
 	};
 
