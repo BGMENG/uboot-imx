@@ -448,17 +448,17 @@
 	status = "okay";
 };
 
-&lpuart1 { /* cell */
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_lpuart1>;
-	status = "okay";
-};
+//&lpuart1 { /* cell */
+//	pinctrl-names = "default";
+//	pinctrl-0 = <&pinctrl_lpuart1>;
+//	status = "okay";
+//};
 
-&lpuart3 { /* bt */
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_bt_uart>;
-	status = "okay";
-};
+//&lpuart3 { /* bt */
+//	pinctrl-names = "default";
+//	pinctrl-0 = <&pinctrl_bt_uart>;
+//	status = "okay";
+//};
 
 &tsens {
 	tsens-num = <6>;
