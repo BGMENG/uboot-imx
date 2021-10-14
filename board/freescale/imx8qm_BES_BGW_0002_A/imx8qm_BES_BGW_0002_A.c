@@ -183,7 +183,7 @@ static void board_gpio_init(void)
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-
+#if 0
 printf("Wifi Powerup sequence start");
 
 	/* First set all pins to Low */
@@ -278,6 +278,7 @@ printf("Wifi Powerup sequence turn on WIFI_PDn");
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 printf("Wifi Powerup sequence complete.");
+#endif
 	/* enable LVDS SAS boards */
 //	ret = dm_gpio_lookup_name("GPIO1_6", &desc);
 //	if (ret) {

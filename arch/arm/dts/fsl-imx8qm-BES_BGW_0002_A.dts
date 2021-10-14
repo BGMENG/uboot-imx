@@ -212,13 +212,13 @@
                 SC_P_ESAI0_SCKR_LSIO_GPIO2_IO24             0x00000060
                 SC_P_ESAI0_SCKT_LSIO_GPIO2_IO25             0x00000060
                 SC_P_ESAI0_TX0_LSIO_GPIO2_IO26              0x00000060
-                SC_P_ESAI0_TX1_LSIO_GPIO2_IO27              0x00000060
-                SC_P_ESAI0_TX2_RX3_LSIO_GPIO2_IO28          0x00000060
-                SC_P_ESAI0_TX3_RX2_LSIO_GPIO2_IO29          0x00000060
+                SC_P_ESAI0_TX1_LSIO_GPIO2_IO27              0x00000040
+                SC_P_ESAI0_TX2_RX3_LSIO_GPIO2_IO28          0x00000040
+                SC_P_ESAI0_TX3_RX2_LSIO_GPIO2_IO29          0x00000040
                 SC_P_ESAI0_TX5_RX0_LSIO_GPIO2_IO31          0x00000060
                 SC_P_ESAI1_FSR_LSIO_GPIO2_IO04              0x00000060
                 SC_P_ESAI1_FST_LSIO_GPIO2_IO05              0x00000060
-                SC_P_ESAI1_SCKR_LSIO_GPIO2_IO06             0x00000060
+                SC_P_ESAI1_SCKR_LSIO_GPIO2_IO06             0x00000040
                 SC_P_ESAI1_SCKT_LSIO_GPIO2_IO07             0x00000060
                 SC_P_ESAI1_TX0_LSIO_GPIO2_IO08              0x00000060
                 SC_P_ESAI1_TX1_LSIO_GPIO2_IO09              0x00000060
