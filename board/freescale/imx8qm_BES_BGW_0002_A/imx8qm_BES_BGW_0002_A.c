@@ -193,21 +193,21 @@ printf("Wifi Powerup sequence start");
 		printf("%s lookup GPIO@2_27 failed ret = %d\n", __func__, ret);
 		return;
 	}
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIO_ACTIVE_LOW | GPIOD_IS_OUT_ACTIVE);
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_ACTIVE_LOW | GPIOD_IS_OUT_ACTIVE);
 	/* WIFI_VBAT_EN */
 	ret = dm_gpio_lookup_name("GPIO2_29", &desc);
 	if (ret) {
 		printf("%s lookup GPIO@2_29 failed ret = %d\n", __func__, ret);
 		return;
 	}
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIO_ACTIVE_LOW | GPIOD_IS_OUT_ACTIVE);
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_ACTIVE_LOW | GPIOD_IS_OUT_ACTIVE);
 	/* WIFI_1V8_EN */
 	ret = dm_gpio_lookup_name("GPIO2_28", &desc);
 	if (ret) {
 		printf("%s lookup GPIO@2_28 failed ret = %d\n", __func__, ret);
 		return;
 	}
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIO_ACTIVE_LOW | GPIOD_IS_OUT_ACTIVE);
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_ACTIVE_LOW | GPIOD_IS_OUT_ACTIVE);
 udelay(5000);
 printf("Wifi Powerup sequence turn on VIO");
 	 /* VIO must go high before VBAT and V1_8 */
