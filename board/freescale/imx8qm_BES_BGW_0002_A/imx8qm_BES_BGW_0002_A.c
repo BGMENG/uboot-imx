@@ -186,21 +186,6 @@ static void board_gpio_init(void)
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
 #if 1
-	/* BT_UART_TX to LOW at Powerup */
-	ret = dm_gpio_lookup_name("GPIO6_02", &desc);
-	if (ret) {
-		printf("%s lookup GPIO@6_02 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	ret = dm_gpio_request(&desc, "bt_uart_tx");
-	if (ret) {
-		printf("%s request bt_uart_tx failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_ACTIVE_LOW | GPIOD_IS_OUT_ACTIVE);
-
 udelay(500);
 	/* WIFI_VIO_EN */
 	ret = dm_gpio_lookup_name("GPIO2_27", &desc);
