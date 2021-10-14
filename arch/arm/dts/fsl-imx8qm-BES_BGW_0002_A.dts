@@ -302,6 +302,11 @@
 //                SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000020
 //            >;
 //        };
+        pinctrl_gpio6: gpio6 {
+            fsl,pins = <
+                SC_P_ENET0_RGMII_TXD2_LSIO_GPIO6_IO02         0x00000063
+            >;
+        };
     };
         pinctrl_usdhc1: usdhc1grp {
             fsl,pins = <
