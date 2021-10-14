@@ -186,7 +186,30 @@ static void board_gpio_init(void)
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
 #if 1
-udelay(500);
+	/* First set all pins to Low */
+	/* WIFI_VIO_EN */
+	ret = dm_gpio_lookup_name("GPIO2_27", &desc);
+	if (ret) {
+		printf("%s lookup GPIO@2_27 failed ret = %d\n", __func__, ret);
+		return;
+	}
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIO_ACTIVE_LOW | GPIOD_IS_OUT_ACTIVE);
+	/* WIFI_VBAT_EN */
+	ret = dm_gpio_lookup_name("GPIO2_29", &desc);
+	if (ret) {
+		printf("%s lookup GPIO@2_29 failed ret = %d\n", __func__, ret);
+		return;
+	}
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIO_ACTIVE_LOW | GPIOD_IS_OUT_ACTIVE);
+	/* WIFI_1V8_EN */
+	ret = dm_gpio_lookup_name("GPIO2_28", &desc);
+	if (ret) {
+		printf("%s lookup GPIO@2_28 failed ret = %d\n", __func__, ret);
+		return;
+	}
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIO_ACTIVE_LOW | GPIOD_IS_OUT_ACTIVE);
+udelay(5000);
+
 	/* WIFI_VIO_EN */
 	ret = dm_gpio_lookup_name("GPIO2_27", &desc);
 	if (ret) {
