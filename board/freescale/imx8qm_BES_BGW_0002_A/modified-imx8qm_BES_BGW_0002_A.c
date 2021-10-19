@@ -92,7 +92,6 @@ int board_early_init_f(void)
 
 static void board_gpio_init(void)
 {
-#if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A) || defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY)
 	int ret;
 	struct gpio_desc desc;
 	/* LED 0 */
@@ -184,8 +183,10 @@ static void board_gpio_init(void)
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-
-#if 1
+#if 0
+printf("Wifi Powerup sequence start\n");
+printf("Wifi Powerup sequence turn on VIO\n");
+	 /* VIO must go high before VBAT and V1_8 */
 	/* WIFI_VIO_EN */
 	ret = dm_gpio_lookup_name("GPIO2_27", &desc);
 	if (ret) {
@@ -199,9 +200,12 @@ static void board_gpio_init(void)
 		return;
 	}
 
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-
-udelay(500);
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_PULL_UP | GPIOD_IS_OUT_ACTIVE);
+// 500 looks like about 25 uSec?
+// 500 * 40 = 20000 should be 1 mSec?
+printf("Wifi Powerup udelay(20000)\n");
+udelay(20000);
+printf("Wifi Powerup sequence turn on Vbat\n");
 
 	/* WIFI_VBAT_EN */
 	ret = dm_gpio_lookup_name("GPIO2_29", &desc);
@@ -217,7 +221,8 @@ udelay(500);
 	}
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-udelay(1500);
+udelay(500);
+printf("Wifi Powerup sequence turn on V1_8\n");
 
 	/* WIFI_1V8_EN */
 	ret = dm_gpio_lookup_name("GPIO2_28", &desc);
@@ -235,7 +240,7 @@ udelay(1500);
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
 udelay(500);
-	
+printf("Wifi Powerup sequence turn on WIFI_PDn\n");
 	/* WIFI_PDn */
 	ret = dm_gpio_lookup_name("GPIO2_06", &desc);
 	if (ret) {
@@ -250,6 +255,7 @@ udelay(500);
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+printf("Wifi Powerup sequence complete.\n");
 #endif
 	/* enable LVDS SAS boards */
 //	ret = dm_gpio_lookup_name("GPIO1_6", &desc);
@@ -280,7 +286,6 @@ udelay(500);
 //	}
 //
 //	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-#endif
 
 }
 int checkboard(void)
