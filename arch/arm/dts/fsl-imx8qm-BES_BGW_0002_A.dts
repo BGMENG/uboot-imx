@@ -89,24 +89,25 @@
 			default-state = "on";
 			output-high;
 		};
-//		wifi_1v8_en{
-//			label = "wifi_1v8_en";
-//			enable-gpios = <&gpio2 28 GPIO_ACTIVE_HIGH>;
+		wifi_1v8_en{
+			label = "wifi_1v8_en";
+			enable-gpios = <&gpio2 28 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+			output-high;
+		};
+		wifi_vbat_en{
+			label = "wifi_vbat_en";
+			enable-gpios = <&gpio2 29 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+			output-high;
+		};
+		wifi_pdn{
+			label = "wifi_pdn";
+			enable-gpios = <&gpio2 06 GPIO_ACTIVE_HIGH>;
 //			default-state = "on";
-//			output-high;
-//		};
-//		wifi_vbat_en{
-//			label = "wifi_vbat_en";
-//			enable-gpios = <&gpio2 29 GPIO_ACTIVE_HIGH>;
-//			default-state = "on";
-//			output-high;
-//		};
-//		wifi_pdn{
-//			label = "wifi_pdn";
-//			enable-gpios = <&gpio2 06 GPIO_ACTIVE_HIGH>;
-//			default-state = "on";
-//			output-high;
-//		};
+			default-state = "off";
+			output-high;
+		};
 	};
 
 	regulators {
@@ -296,8 +297,8 @@
 
         pinctrl_bt_uart: bt_uartgrp {
             fsl,pins = <
-                SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x06000020
-                SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x06000020
+//                SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x00000020
+//                SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000020
 //                SC_P_ENET0_RGMII_TXD3_DMA_UART3_RTS_B       0x06000020
 //                SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000020
             >;
