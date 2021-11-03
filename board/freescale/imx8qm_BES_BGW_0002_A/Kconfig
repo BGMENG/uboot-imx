@@ -9,6 +9,9 @@ config SYS_VENDOR
 config SYS_CONFIG_NAME
 	default "imx8qm_BES_BGW_0002_A"
 
+config IMX_CONTAINER_CFG
+	default "board/freescale/imx8qm_BES_BGW_0002_A/uboot-container.cfg"
+
 source "board/freescale/common/Kconfig"
 
 endif
