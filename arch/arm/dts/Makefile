@@ -827,8 +827,30 @@ dtb-$(CONFIG_ARCH_MX7ULP) += imx7ulp-com.dtb \
 	imx7ulp-evk-qspi.dtb
 
 dtb-$(CONFIG_ARCH_IMX8) += \
-	fsl-imx8qm-custom.dtb \
-	fsl-imx8qm-BES_BGW_0002_A.dtb 
+	fsl-imx8qm-apalis.dtb \
+	fsl-imx8qm-BES_BGW_0002_A.dtb \
+	fsl-imx8qm-mek.dtb \
+	fsl-imx8qm-ddr4-val.dtb \
+	fsl-imx8qm-lpddr4-val.dtb \
+	fsl-imx8qm-mek-cockpit-a53.dtb \
+	fsl-imx8qm-mek-cockpit-a72.dtb \
+	fsl-imx8qm-mek-xen.dtb \
+	imx8qm-rom7720-a1.dtb \
+	fsl-imx8qxp-ai_ml.dtb \
+	fsl-imx8qxp-colibri.dtb \
+	fsl-imx8qxp-apalis.dtb \
+	fsl-imx8qxp-mek.dtb \
+	fsl-imx8qxp-lpddr4-val.dtb \
+	fsl-imx8qxp-lpddr4-val-gpmi-nand.dtb \
+	fsl-imx8qxp-17x17-val.dtb \
+	fsl-imx8dx-17x17-val.dtb \
+	fsl-imx8dx-mek.dtb \
+	fsl-imx8dxl-phantom-mek.dtb \
+	fsl-imx8dxl-evk.dtb \
+	fsl-imx8dxl-evk-lcdif.dtb \
+	fsl-imx8dxl-ddr3-evk.dtb \
+	imx8-deneb.dtb \
+	imx8-giedi.dtb
 
 dtb-$(CONFIG_ARCH_IMX8M) += \
 	imx8mm-evk.dtb \
