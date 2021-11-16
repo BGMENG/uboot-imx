@@ -62,7 +62,7 @@ static ulong bootloader_mmc_offset(void)
 		else
 		/* target device is SD card, bootloader offset is 0x8000 */
 			return 0x8000;
-	} else if (is_imx8mn() || is_imx8mp() || is_imx8dxl()) {
+	} else if (is_imx8mn() || is_imx8mp() || is_imx8dxl() || is_imx8ulp()) {
 		/* target device is eMMC boot0 partition, bootloader offset is 0x0 */
 		if (env_get_ulong("emmc_dev", 10, 2) == fastboot_devinfo.dev_id)
 			return 0;
@@ -214,7 +214,7 @@ static int _fastboot_parts_load_from_ptable(void)
 #ifdef CONFIG_FLASH_MCUFIRMWARE_SUPPORT
 	strcpy(ptable[PTN_MCU_OS_INDEX].name, FASTBOOT_MCU_FIRMWARE_PARTITION);
 	ptable[PTN_MCU_OS_INDEX].start = ANDROID_MCU_FIRMWARE_START / dev_desc->blksz;
-	ptable[PTN_MCU_OS_INDEX].length = ANDROID_MCU_FIRMWARE_SIZE / dev_desc->blksz;
+	ptable[PTN_MCU_OS_INDEX].length = ANDROID_MCU_OS_PARTITION_SIZE / dev_desc->blksz;
 	ptable[PTN_MCU_OS_INDEX].flags = FASTBOOT_PTENTRY_FLAGS_UNERASEABLE;
 	ptable[PTN_MCU_OS_INDEX].partition_id = user_partition;
 	strcpy(ptable[PTN_MCU_OS_INDEX].fstype, "raw");

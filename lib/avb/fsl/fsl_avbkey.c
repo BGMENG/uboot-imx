@@ -311,7 +311,7 @@ int rpmb_read(struct mmc *mmc, uint8_t *buffer, size_t num_bytes, int64_t offset
 	if (!strcmp(kp.magic, KEYPACK_MAGIC)) {
 		/* Use the key from keyslot. */
 		memcpy(blob, kp.rpmb_keyblob, RPMBKEY_BLOB_LEN);
-		if (blob_decap(keymod, blob, extract_key, RPMBKEY_LENGTH)) {
+		if (blob_decap(keymod, blob, extract_key, RPMBKEY_LENGTH, 0)) {
 			ERR("decap rpmb key error\n");
 			ret = -1;
 			goto fail;
@@ -420,7 +420,7 @@ int rpmb_write(struct mmc *mmc, uint8_t *buffer, size_t num_bytes, int64_t offse
 	if (!strcmp(kp.magic, KEYPACK_MAGIC)) {
 		/* Use the key from keyslot. */
 		memcpy(blob, kp.rpmb_keyblob, RPMBKEY_BLOB_LEN);
-		if (blob_decap(keymod, blob, extract_key, RPMBKEY_LENGTH)) {
+		if (blob_decap(keymod, blob, extract_key, RPMBKEY_LENGTH, 0)) {
 			ERR("decap rpmb key error\n");
 			ret = -1;
 			goto fail;
@@ -663,7 +663,7 @@ int gen_rpmb_key(struct keyslot_package *kp) {
 	keymod = (uint8_t *)memalign(ARCH_DMA_MINALIGN, sizeof(skeymod));
 	memcpy(keymod, skeymod, sizeof(skeymod));
 	/* generate keyblob and program to boot1 partition */
-	if (blob_encap(keymod, plain_key, kp->rpmb_keyblob, RPMBKEY_LENGTH)) {
+	if (blob_encap(keymod, plain_key, kp->rpmb_keyblob, RPMBKEY_LENGTH, 0)) {
 		ERR("gen rpmb key blb error\n");
 		goto fail;
 	}
@@ -1181,7 +1181,7 @@ bool hab_is_enabled(void)
 	}
 
 	if (lc != 0x80)
-#else
+#elif CONFIG_ARCH_IMX8M
 	struct imx_sec_config_fuse_t *fuse =
 		(struct imx_sec_config_fuse_t *)&imx_sec_config_fuse;
 	uint32_t reg;
@@ -1194,6 +1194,8 @@ bool hab_is_enabled(void)
 	}
 
 	if (!((reg & HAB_ENABLED_BIT) == HAB_ENABLED_BIT))
+#else
+		if (1)
 #endif
 		return false;
 	else

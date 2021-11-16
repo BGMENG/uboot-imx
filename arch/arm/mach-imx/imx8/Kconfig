@@ -35,21 +35,20 @@ config IMX8QM
 	select SPL_RECOVER_DATA_SECTION
 	bool
 
+config IMX8QXP
+	select IMX8
+	select SUPPORT_SPL
+	select SPL_RECOVER_DATA_SECTION
+	bool
+
+config IMX8DXL
+	select IMX8
+	select SUPPORT_SPL
+	select RECOVER_SPL_DATA_SECTION
+	bool
+
 config SYS_SOC
 	default "imx8"
-
-config SPL_LOAD_IMX_CONTAINER
-	bool "Enable SPL loading U-Boot as a i.MX Container image"
-	depends on SPL
-	help
-	  This is to let SPL could load i.MX8 Container image
-
-config IMX_CONTAINER_CFG
-	string "i.MX Container config file"
-	depends on SPL
-	help
-	  This is to specific the cfg file for generating container
-	  image which will be loaded by SPL.
 
 config BOOTAUX_RESERVED_MEM_BASE
 	hex "i.MX auxiliary core dram memory base"
@@ -74,6 +73,35 @@ config TARGET_APALIS_IMX8
 	select BOARD_LATE_INIT
 	select IMX8QM
 
+config TARGET_COLIBRI_IMX8X
+	bool "Support Colibri iMX8X module"
+	select BOARD_LATE_INIT
+	select IMX8QXP
+
+config TARGET_APALIS_IMX8X
+	bool "Support Apalis iMX8X module"
+	select BOARD_LATE_INIT
+	select IMX8QXP
+
+config TARGET_DENEB
+	bool "Support i.MX8QXP Capricorn Deneb board"
+	select BOARD_LATE_INIT
+	select IMX8QXP
+
+config TARGET_GIEDI
+	bool "Support i.MX8QXP Capricorn Giedi board"
+	select BOARD_LATE_INIT
+	select IMX8QXP
+
+config TARGET_IMX8QM_BES_BGW_0002_A
+	bool "Support i.MX8QM BES_BGW_0002_A board"
+	select BOARD_LATE_INIT
+	select IMX8QM
+	select FSL_CAAM
+	select FSL_BLOB
+	select ARCH_MISC_INIT
+	select SPL_CRYPTO_SUPPORT if SPL
+
 config TARGET_IMX8QM_MEK
 	bool "Support i.MX8QM MEK board"
 	select BOARD_LATE_INIT
@@ -83,19 +111,88 @@ config TARGET_IMX8QM_MEK
 	select ARCH_MISC_INIT
 	select SPL_CRYPTO_SUPPORT if SPL
 
-config TARGET_IMX8QM_CUSTOM
-	bool "Support i.MX8QM Custom board"
+config TARGET_IMX8QM_LPDDR4_VAL
+	bool "Support i.MX8QM lpddr4 validation board"
 	select BOARD_LATE_INIT
 	select IMX8QM
+
+config TARGET_IMX8QM_DDR4_VAL
+	bool "Support i.MX8QM ddr4 validation board"
+	select BOARD_LATE_INIT
+	select IMX8QM
+
+config TARGET_IMX8QM_ROM7720_A1
+	bool "Support i.MX8QM ROM-7720-A1"
+	select BOARD_LATE_INIT
+	select SUPPORT_SPL
+	select IMX8QM
+
+config TARGET_IMX8QXP_MEK
+	bool "Support i.MX8QXP MEK board"
+	select BOARD_LATE_INIT
+	select IMX8QXP
 	select FSL_CAAM
 	select FSL_BLOB
 	select ARCH_MISC_INIT
 	select SPL_CRYPTO_SUPPORT if SPL
 
-config TARGET_IMX8QM_BES_BGW_0002_A
-	bool "Support i.MX8QM Custom board"
+config TARGET_IMX8QM_MEK_A53_ONLY
+        bool "Support i.MX8QM MEK board, cluster A53 only"
+        select BOARD_LATE_INIT
+        select IMX8QM
+
+config TARGET_IMX8QM_MEK_A72_ONLY
+        bool "Support i.MX8QM MEK board, cluster A72 only"
+        select BOARD_LATE_INIT
+        select IMX8QM
+
+config TARGET_IMX8QXP_LPDDR4_VAL
+	bool "Support i.MX8QXP lpddr4 validation board"
 	select BOARD_LATE_INIT
-	select IMX8QM
+	select IMX8QXP
+
+config TARGET_IMX8QXP_DDR3_VAL
+	bool "Support i.MX8QXP ddr3 validation board"
+	select BOARD_LATE_INIT
+	select IMX8QXP
+
+config TARGET_IMX8X_17X17_VAL
+	bool "Support i.MX8QXP/DX 17x17 validation board"
+	select BOARD_LATE_INIT
+	select IMX8QXP
+
+config TARGET_IMX8DXL_PHANTOM_MEK
+	bool "Support i.MX8DXL PHANTOM MEK board"
+	select BOARD_LATE_INIT
+	select IMX8QXP
+	select FSL_CAAM
+	select FSL_BLOB
+	select ARCH_MISC_INIT
+	select SPL_CRYPTO_SUPPORT if SPL
+
+config TARGET_IMX8DX_MEK
+	bool "Support i.MX8DX MEK board"
+	select BOARD_LATE_INIT
+	select SUPPORT_SPL
+	select IMX8QXP
+	select FSL_CAAM
+	select FSL_BLOB
+	select ARCH_MISC_INIT
+	select SPL_CRYPTO_SUPPORT if SPL
+
+config TARGET_IMX8DXL_EVK
+	bool "Support i.MX8DXL EVK board"
+	select BOARD_LATE_INIT
+	select IMX8DXL
+	select FSL_CAAM
+	select FSL_BLOB
+	select ARCH_MISC_INIT
+	select SPL_CRYPTO_SUPPORT if SPL
+
+config TARGET_IMX8DXL_DDR3_EVK
+	bool "Support i.MX8DXL EVK board"
+	select BOARD_LATE_INIT
+	select IMX8DXL
 	select FSL_CAAM
 	select FSL_BLOB
 	select ARCH_MISC_INIT
@@ -103,10 +200,18 @@ config TARGET_IMX8QM_BES_BGW_0002_A
 
 endchoice
 
-source "board/freescale/imx8qm_mek/Kconfig"
-source "board/freescale/imx8qm_custom/Kconfig"
 source "board/freescale/imx8qm_BES_BGW_0002_A/Kconfig"
+source "board/freescale/imx8qm_mek/Kconfig"
+source "board/freescale/imx8qxp_mek/Kconfig"
+source "board/freescale/imx8qm_val/Kconfig"
+source "board/freescale/imx8qxp_val/Kconfig"
+source "board/freescale/imx8dxl_phantom_mek/Kconfig"
+source "board/freescale/imx8dxl_evk/Kconfig"
+source "board/advantech/imx8qm_rom7720_a1/Kconfig"
 source "board/toradex/apalis-imx8/Kconfig"
+source "board/toradex/colibri-imx8x/Kconfig"
+source "board/toradex/apalis-imx8x/Kconfig"
+source "board/siemens/capricorn/Kconfig"
 
 config IMX_SNVS_SEC_SC
 	bool "Support SNVS configuration"

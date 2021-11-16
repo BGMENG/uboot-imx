@@ -703,7 +703,6 @@ static int mmc_send_op_cond(struct mmc *mmc)
 	for (i = 0; ; i++) {
 		err = mmc_send_op_cond_iter(mmc, i != 0);
 		if (err)
-pr_err("Card err: %d\n", err);
 			return err;
 
 		/* exit if not busy (flag seems to be inverted) */
@@ -711,7 +710,6 @@ pr_err("Card err: %d\n", err);
 			break;
 
 		if (get_timer(start) > timeout)
-pr_err("Card timeout.\n");
 			return -ETIMEDOUT;
 		udelay(100);
 	}
