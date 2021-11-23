@@ -115,6 +115,16 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 
+		reg_usb_otg1_vbus: regulator@0 {
+			compatible = "regulator-fixed";
+			reg = <0>;
+			regulator-name = "usb_otg1_vbus";
+			regulator-min-microvolt = <5000000>;
+			regulator-max-microvolt = <5000000>;
+			gpio = <&gpio4 3 GPIO_ACTIVE_HIGH>;
+			enable-active-high;
+		};
+
 		reg_usdhc2_vmmc: usdhc2_vmmc {
 			compatible = "regulator-fixed";
 			regulator-name = "sw-3p3-sd1";
@@ -134,6 +144,12 @@
 	imx8qm-BES_BGW_0002_A {
 		pinctrl_hog: hoggrp{
 			fsl,pins = <
+				SC_P_USB_SS3_TC0_LSIO_GPIO4_IO03	  0x06000048
+				SC_P_LVDS0_I2C0_SCL_LSIO_GPIO1_IO06	  0x06000021
+				SC_P_LVDS0_I2C0_SDA_LSIO_GPIO1_IO07	  0x06000021
+				SC_P_QSPI1A_SS1_B_LSIO_GPIO4_IO20		  0x06000021
+				SC_P_QSPI1A_DATA2_LSIO_GPIO4_IO24		  0x06000021
+				SC_P_QSPI1A_DATA3_LSIO_GPIO4_IO23		  0x06000021
 				SC_P_ESAI0_SCKR_LSIO_GPIO2_IO24             0x00000060
 				SC_P_ESAI0_SCKT_LSIO_GPIO2_IO25             0x00000060
 				SC_P_ESAI0_TX0_LSIO_GPIO2_IO26              0x00000060
@@ -267,8 +283,8 @@
 
         pinctrl_i2c0: i2c0grp {
             fsl,pins = <
-                SC_P_HDMI_TX0_TS_SCL_DMA_I2C0_SCL           0x06000020
-                SC_P_HDMI_TX0_TS_SDA_DMA_I2C0_SDA           0x06000020
+                SC_P_HDMI_TX0_TS_SCL_DMA_I2C0_SCL           0x06000021
+                SC_P_HDMI_TX0_TS_SDA_DMA_I2C0_SDA           0x06000021
             >;
         };
 
@@ -286,6 +302,20 @@
             >;
         };
 
+	pinctrl_typec: typecgrp {
+            fsl,pins = <
+                SC_P_QSPI1A_SS0_B_LSIO_GPIO4_IO19	0x60
+                SC_P_USB_SS3_TC3_LSIO_GPIO4_IO06	0x60
+                SC_P_QSPI1A_DATA0_LSIO_GPIO4_IO26	0x00000021
+            >;
+	};
+
+        pinctrl_usbotg1: usbotg1 {
+            fsl,pins = <
+                SC_P_USB_SS3_TC0_CONN_USB_OTG1_PWR
+            >;
+        };
+
         pinctrl_lpuart1: lpuart1grp {
             fsl,pins = <
                 SC_P_UART1_CTS_B_DMA_UART1_CTS_B            0x06000020
@@ -297,10 +327,10 @@
 
         pinctrl_bt_uart: bt_uartgrp {
             fsl,pins = <
-//                SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x00000020
-//                SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000020
-//                SC_P_ENET0_RGMII_TXD3_DMA_UART3_RTS_B       0x06000020
-//                SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000020
+                SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x00000020
+                SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000020
+                SC_P_ENET0_RGMII_TXD3_DMA_UART3_RTS_B       0x06000020
+                SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000020
             >;
         };
     };
@@ -368,6 +398,19 @@
 
 &gpio5 {
 	status = "okay";
+};
+
+&usbotg1 {
+         vbus-supply = <&reg_usb_otg1_vbus>;
+         srp-disable;
+         hnp-disable;
+         adp-disable;
+         disable-over-current;
+         status = "okay";
+};
+
+&usbotg3 {
+         status = "okay";
 };
 
 &usdhc1 {
