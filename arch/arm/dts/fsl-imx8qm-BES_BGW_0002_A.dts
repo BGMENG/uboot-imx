@@ -312,7 +312,7 @@
 
         pinctrl_usbotg1: usbotg1 {
             fsl,pins = <
-                SC_P_USB_SS3_TC0_CONN_USB_OTG1_PWR
+                SC_P_USB_SS3_TC1_CONN_USB_OTG2_PWR
             >;
         };
 
