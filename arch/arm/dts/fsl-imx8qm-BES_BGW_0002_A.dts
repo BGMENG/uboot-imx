@@ -11,6 +11,10 @@
 	model = "NXP i.MX8QM BES_BGW_0002_A";
 	compatible = "fsl,imx8qm-BES_BGW_0002_A", "fsl,imx8qm";
 
+//	aliases {
+//		gpio8 = &max7322;
+//	};
+
 	chosen {
 		bootargs = "console=ttyLP0,115200 earlycon";
 		stdout-path = &lpuart0;
@@ -254,16 +258,16 @@
             >;
         };
 
-	pinctrl_gnss_reset: gnssresetgrp {
-		fsl,pins = <
-			SC_P_ESAI0_FST_LSIO_GPIO2_IO23              0x00000060
-		>;
-	};
-	pinctrl_gnss_dir: gnssdirgrp {
-		fsl,pins = <
-			SC_P_ESAI0_FSR_LSIO_GPIO2_IO22              0x00000060
-		>;
-	};
+	    pinctrl_gnss_reset: gnssresetgrp {
+		    fsl,pins = <
+	   		    SC_P_ESAI0_FST_LSIO_GPIO2_IO23              0x00000060
+		    >;
+	    };
+	    pinctrl_gnss_dir: gnssdirgrp {
+		    fsl,pins = <
+			    SC_P_ESAI0_FSR_LSIO_GPIO2_IO22              0x00000060
+		    >;
+	    };
 
         pinctrl_flexcan1: flexcan1grp {
             fsl,pins = <
@@ -302,13 +306,13 @@
             >;
         };
 
-	pinctrl_typec: typecgrp {
+		pinctrl_typec: typecgrp {
             fsl,pins = <
                 SC_P_QSPI1A_SS0_B_LSIO_GPIO4_IO19	0x60
                 SC_P_USB_SS3_TC3_LSIO_GPIO4_IO06	0x60
                 SC_P_QSPI1A_DATA0_LSIO_GPIO4_IO26	0x00000021
             >;
-	};
+		};
 
         pinctrl_usbotg2: usbotg2 {
             fsl,pins = <
@@ -333,7 +337,7 @@
                 SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000020
             >;
         };
-    };
+
         pinctrl_usdhc1: usdhc1grp {
             fsl,pins = <
                 SC_P_EMMC0_CLK_CONN_EMMC0_CLK               0x06000041
@@ -381,7 +385,7 @@
                 SC_P_USDHC2_DATA3_CONN_USDHC2_DATA3         0x00000020
             >;
         };
-
+	};
 };
 
 &gpio1 {
@@ -400,16 +404,16 @@
 	status = "okay";
 };
 
-&usbotg2 {
+&usbotg1 {
+         status = "okay";
+};
+
+&usbotg3 {
          vbus-supply = <&reg_usb_otg2_vbus>;
          srp-disable;
          hnp-disable;
          adp-disable;
          disable-over-current;
-         status = "okay";
-};
-
-&usbotg3 {
          status = "okay";
 };
 
