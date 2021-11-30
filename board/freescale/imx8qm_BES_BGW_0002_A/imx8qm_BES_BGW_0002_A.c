@@ -110,11 +110,16 @@ static void board_gpio_init(void)
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-	/* CELL RESET */
+/*-----------------------------------------------------------------------------*/
+/* CELL RESET */
 	ret = dm_gpio_lookup_name("GPIO0_09", &desc);
 	if (ret) {
 		printf("%s lookup GPIO@0_09 failed ret = %d\n", __func__, ret);
 		return;
+	}
+	else
+	{
+		printf("%s lookup GPIO@0_09 success ret = %d\n", __func__, ret);
 	}
 
 	ret = dm_gpio_request(&desc, "cell_reset");
@@ -122,10 +127,14 @@ static void board_gpio_init(void)
 		printf("%s request cell_reset failed ret = %d\n", __func__, ret);
 		return;
 	}
+	else
+	{
+		printf("%s request cell_reset success ret = %d\n", __func__, ret);
+	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 	printf("cell_reset set\n");
-
+/*-----------------------------------------------------------------------------*/
 	/* LED 1 */
 	ret = dm_gpio_lookup_name("GPIO2_15", &desc);
 	if (ret) {
