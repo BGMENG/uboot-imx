@@ -61,6 +61,11 @@
                         gpios = <&gpio2 18 GPIO_ACTIVE_HIGH>;
                         default-state = "off";
                 };
+                cell_reset {
+                        label = "cell_reset";
+                        gpios = <&gpio2 18 GPIO_ACTIVE_HIGH>;
+                        default-state = "on";
+                };
         };
 
 	gpio {
