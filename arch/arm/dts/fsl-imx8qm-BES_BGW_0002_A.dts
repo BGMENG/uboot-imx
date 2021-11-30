@@ -193,17 +193,17 @@
 			>;
         	};
 
-		pinctrl_led0: led0grp{
-			fsl,pins = <
-				SC_P_SPDIF0_RX_LSIO_GPIO2_IO14              0x00000060
-			>;
-		};
-
-		pinctrl_led1: led1grp{
-			fsl,pins = <
-				SC_P_SPDIF0_TX_LSIO_GPIO2_IO15              0x00000060
-			>;
-		};
+//		pinctrl_led0: led0grp{
+//			fsl,pins = <
+//				SC_P_SPDIF0_RX_LSIO_GPIO2_IO14              0x00000060
+//			>;
+//		};
+//
+//		pinctrl_led1: led1grp{
+//			fsl,pins = <
+//				SC_P_SPDIF0_TX_LSIO_GPIO2_IO15              0x00000060
+//			>;
+//		};
 
 	        pinctrl_v50: v50grp{
 			fsl,pins = <
