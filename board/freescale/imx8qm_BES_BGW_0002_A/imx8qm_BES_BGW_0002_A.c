@@ -110,6 +110,21 @@ static void board_gpio_init(void)
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
+	/* CELL RESET */
+	ret = dm_gpio_lookup_name("GPIO0_9", &desc);
+	if (ret) {
+		printf("%s lookup GPIO@0_9 failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+	ret = dm_gpio_request(&desc, "cell_reset");
+	if (ret) {
+		printf("%s request cell_reset failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+
 	/* LED 1 */
 	ret = dm_gpio_lookup_name("GPIO2_15", &desc);
 	if (ret) {
