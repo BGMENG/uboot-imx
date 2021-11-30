@@ -112,6 +112,13 @@ static void board_gpio_init(void)
 
 /*-----------------------------------------------------------------------------*/
 /* CELL RESET */
+	err = sc_pad_set_all(ipc, SC_P_M40_GPIO0_01, 3U, SC_PAD_CONFIG_NORMAL, SC_PAD_ISO_OFF, 0x40 ,SC_PAD_WAKEUP_OFF);/* IOMUXD_M40_GPIO0_01 register modification value */
+	if (SC_ERR_NONE != err)
+	{
+            assert(false);
+	}
+	printf("sc_error: %d\n",err);
+
 	ret = dm_gpio_lookup_name("GPIO0_09", &desc);
 	if (ret) {
 		printf("%s lookup GPIO@0_09 failed ret = %d\n", __func__, ret);
