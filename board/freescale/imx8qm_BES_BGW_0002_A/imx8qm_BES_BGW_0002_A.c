@@ -112,13 +112,6 @@ static void board_gpio_init(void)
 
 /*-----------------------------------------------------------------------------*/
 /* CELL RESET */
-	err = sc_pad_set_all(ipc, SC_P_M40_GPIO0_01, 3U, SC_PAD_CONFIG_NORMAL, SC_PAD_ISO_OFF, 0x40 ,SC_PAD_WAKEUP_OFF);/* IOMUXD_M40_GPIO0_01 register modification value */
-	if (SC_ERR_NONE != err)
-	{
-            assert(false);
-	}
-	printf("sc_error: %d\n",err);
-
 	ret = dm_gpio_lookup_name("GPIO0_09", &desc);
 	if (ret) {
 		printf("%s lookup GPIO@0_09 failed ret = %d\n", __func__, ret);
@@ -143,19 +136,19 @@ static void board_gpio_init(void)
 	printf("cell_reset set\n");
 /*-----------------------------------------------------------------------------*/
 	/* LED 1 */
-	ret = dm_gpio_lookup_name("GPIO2_15", &desc);
-	if (ret) {
-		printf("%s lookup GPIO@2_15 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	ret = dm_gpio_request(&desc, "led_1");
-	if (ret) {
-		printf("%s request led_1 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+//	ret = dm_gpio_lookup_name("GPIO2_15", &desc);
+//	if (ret) {
+//		printf("%s lookup GPIO@2_15 failed ret = %d\n", __func__, ret);
+//		return;
+//	}
+//
+//	ret = dm_gpio_request(&desc, "led_1");
+//	if (ret) {
+//		printf("%s request led_1 failed ret = %d\n", __func__, ret);
+//		return;
+//	}
+//
+//	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
 	/* V3_8_PER */
 	ret = dm_gpio_lookup_name("GPIO2_25", &desc);
