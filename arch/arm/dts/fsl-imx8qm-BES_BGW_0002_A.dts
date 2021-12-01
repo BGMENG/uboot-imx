@@ -66,7 +66,7 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_hog>;
+//		pinctrl-0 = <&pinctrl_hog>;
 		v5_0_per{
 			label = "V5_0_per";
 			enable-gpios = <&gpio2 24 GPIO_ACTIVE_HIGH>;
