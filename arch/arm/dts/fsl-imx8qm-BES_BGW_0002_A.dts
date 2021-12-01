@@ -11,22 +11,29 @@
 	model = "NXP i.MX8QM BES_BGW_0002_A";
 	compatible = "fsl,imx8qm-BES_BGW_0002_A", "fsl,imx8qm";
 
+//	aliases {
+//		gpio8 = &max7322;
+//	};
+
 	chosen {
 		bootargs = "console=ttyLP0,115200 earlycon";
 		stdout-path = &lpuart0;
 	};
 
+	alias {
+		gpio8 = <&gpio7>;
+	};
         leds {
                 compatible = "gpio-leds";
                 pinctrl-names = "default";
-               pinctrl-0 = <&pinctrl_led0>;
+                pinctrl-0 = <&pinctrl_led0>;
                 pinctrl-1 = <&pinctrl_led1>;
                 led0 {
- 	 		 vcc-supply = <&pinctrl_v38>;
-                       label = "led0";
-                       gpios = <&gpio2 14 GPIO_ACTIVE_HIGH>;
-                       linux,default-trigger = "heartbeat";
-                       default-state = "on";
+			vcc-supply = <&pinctrl_v38>;
+                        label = "led0";
+                        gpios = <&gpio2 14 GPIO_ACTIVE_HIGH>;
+                        linux,default-trigger = "heartbeat";
+                        default-state = "on";
                 };
                 led1 {
                         label = "led1";
@@ -54,11 +61,11 @@
                         gpios = <&gpio2 18 GPIO_ACTIVE_HIGH>;
                         default-state = "off";
                 };
-//                cell_reset {
-//                        label = "cell_reset";
-//                        gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
-//                        default-state = "on";
-//                };
+                cell_reset {
+                        label = "cell_reset";
+                        gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+                        default-state = "on";
+                };
         };
 
 	gpio {
@@ -66,7 +73,7 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		pinctrl-names = "default";
-//		pinctrl-0 = <&pinctrl_hog>;
+		pinctrl-0 = <&pinctrl_hog>;
 		v5_0_per{
 			label = "V5_0_per";
 			enable-gpios = <&gpio2 24 GPIO_ACTIVE_HIGH>;
@@ -106,6 +113,7 @@
 		wifi_pdn{
 			label = "wifi_pdn";
 			enable-gpios = <&gpio2 06 GPIO_ACTIVE_HIGH>;
+//			default-state = "on";
 			default-state = "off";
 			output-high;
 		};
@@ -140,22 +148,22 @@
 
 &iomuxc {
 	pinctrl-names = "default";
-//	pinctrl-0 = <&pinctrl_hog>;
+	pinctrl-0 = <&pinctrl_hog>;
 
 	imx8qm-BES_BGW_0002_A {
-//		pinctrl_hog: hoggrp{
-//			fsl,pins = <
-//				SC_P_USB_SS3_TC0_LSIO_GPIO4_IO03	0x06000048
-//				SC_P_LVDS0_I2C0_SCL_LSIO_GPIO1_IO06	0x06000021
-//				SC_P_LVDS0_I2C0_SDA_LSIO_GPIO1_IO07	0x06000021
-//				SC_P_QSPI1A_SS1_B_LSIO_GPIO4_IO20	0x06000021
-//				SC_P_QSPI1A_DATA2_LSIO_GPIO4_IO24	0x06000021
-//				SC_P_QSPI1A_DATA3_LSIO_GPIO4_IO23	0x06000021
-//				SC_P_ESAI0_SCKR_LSIO_GPIO2_IO24         0x00000060
-//				SC_P_ESAI0_SCKT_LSIO_GPIO2_IO25         0x00000060
-//				SC_P_ESAI0_TX0_LSIO_GPIO2_IO26          0x00000060
-//			>;
-//		};
+		pinctrl_hog: hoggrp{
+			fsl,pins = <
+				SC_P_USB_SS3_TC0_LSIO_GPIO4_IO03	0x06000048
+				SC_P_LVDS0_I2C0_SCL_LSIO_GPIO1_IO06	0x06000021
+				SC_P_LVDS0_I2C0_SDA_LSIO_GPIO1_IO07	0x06000021
+				SC_P_QSPI1A_SS1_B_LSIO_GPIO4_IO20	0x06000021
+				SC_P_QSPI1A_DATA2_LSIO_GPIO4_IO24	0x06000021
+				SC_P_QSPI1A_DATA3_LSIO_GPIO4_IO23	0x06000021
+				SC_P_ESAI0_SCKR_LSIO_GPIO2_IO24         0x00000060
+				SC_P_ESAI0_SCKT_LSIO_GPIO2_IO25         0x00000060
+				SC_P_ESAI0_TX0_LSIO_GPIO2_IO26          0x00000060
+			>;
+		};
 
 		pinctrl_adc: adcgrp {
 			fsl,pins = <
@@ -172,14 +180,14 @@
 
 		pinctrl_gpio0: gpio0 {
 			fsl,pins = <
-				SC_P_GPT0_CAPTURE_LSIO_GPIO0_IO15	    0x00000060 /* CELL_DSR_MPU */
+				SC_P_GPT0_CAPTURE_LSIO_GPIO0_IO15		0x00000060 /* CELL_DSR_MPU */
 				SC_P_GPT0_CLK_LSIO_GPIO0_IO14               0x00000060 /* CELL_ON */
 				SC_P_GPT0_COMPARE_LSIO_GPIO0_IO16           0x00000060 /* CELL_RI_MPU */
 				SC_P_GPT1_CAPTURE_LSIO_GPIO0_IO18           0x00000060 /* CELL_DTR_MPU */
 				SC_P_GPT1_CLK_LSIO_GPIO0_IO17               0x00000060 /* CELL_DCD_MPU */
 				SC_P_GPT1_COMPARE_LSIO_GPIO0_IO19           0x00000060 /* FAN_PWM */
 				SC_P_M40_GPIO0_00_LSIO_GPIO0_IO08           0x00000060 /* CELL_PWR_ON_3V3 */
-				SC_P_M40_GPIO0_01_LSIO_GPIO0_IO09           0x00000060 /* CELL_RESET_3V3 */
+				SC_P_M40_GPIO0_01_LSIO_GPIO0_IO09           0x00000020 /* CELL_RESET_3V3 */
 //				SC_P_SCU_GPIO0_00_LSIO_GPIO0_IO28           0x00000063 /* PMIC1_PGOOD */
 //				SC_P_SCU_GPIO0_01_LSIO_GPIO0_IO29           0x00000063 /* PMIC2_PGOOD */
 //				SC_P_SCU_GPIO0_02_LSIO_GPIO0_IO30           0x00000063 /* BOOT_LED */
@@ -204,18 +212,6 @@
 			>;
 		};
 
-		pinctrl_gnss_dir: gnssdirgrp {
-		    	fsl,pins = <
-			    	SC_P_ESAI0_FSR_LSIO_GPIO2_IO22              0x00000060
-		    	>;
-		};
-		
-		pinctrl_gnss_reset: gnssresetgrp {
-			fsl,pins = <
-   				SC_P_ESAI0_FST_LSIO_GPIO2_IO23              0x00000060
-			>;
- 		};
-
 	        pinctrl_v50: v50grp{
 			fsl,pins = <
 				SC_P_ESAI0_SCKR_LSIO_GPIO2_IO24             0x00000060
@@ -236,17 +232,17 @@
 
 	        pinctrl_gpio2: gpio2 {
 			fsl,pins = <
-//	                	SC_P_SPDIF0_RX_LSIO_GPIO2_IO14              0x00000040
-//			        SC_P_SPDIF0_TX_LSIO_GPIO2_IO15              0x00000040
+	                	SC_P_SPDIF0_RX_LSIO_GPIO2_IO14              0x00000040
+			        SC_P_SPDIF0_TX_LSIO_GPIO2_IO15              0x00000040
         	        	SC_P_SPI3_CS0_LSIO_GPIO2_IO20               0x00000040
 	                	SC_P_SPI3_SCK_LSIO_GPIO2_IO17               0x00000040
 		                SC_P_SPI3_SDI_LSIO_GPIO2_IO19               0x00000040
         		        SC_P_SPI3_SDO_LSIO_GPIO2_IO18               0x00000040
-//	                	SC_P_ESAI0_FSR_LSIO_GPIO2_IO22              0x00000060
-//		                SC_P_ESAI0_FST_LSIO_GPIO2_IO23              0x00000060
-//        		        SC_P_ESAI0_SCKR_LSIO_GPIO2_IO24             0x00000060
-//	                	SC_P_ESAI0_SCKT_LSIO_GPIO2_IO25             0x00000060
-//		                SC_P_ESAI0_TX0_LSIO_GPIO2_IO26              0x00000060
+	                	SC_P_ESAI0_FSR_LSIO_GPIO2_IO22              0x00000060
+		                SC_P_ESAI0_FST_LSIO_GPIO2_IO23              0x00000060
+        		        SC_P_ESAI0_SCKR_LSIO_GPIO2_IO24             0x00000060
+	                	SC_P_ESAI0_SCKT_LSIO_GPIO2_IO25             0x00000060
+		                SC_P_ESAI0_TX0_LSIO_GPIO2_IO26              0x00000060
         		        SC_P_ESAI0_TX1_LSIO_GPIO2_IO27              0x00000060
 	                	SC_P_ESAI0_TX2_RX3_LSIO_GPIO2_IO28          0x00000060
 		                SC_P_ESAI0_TX3_RX2_LSIO_GPIO2_IO29          0x00000060
@@ -274,6 +270,17 @@
         	    >;
 	        };
 
+		pinctrl_gnss_reset: gnssresetgrp {
+		    fsl,pins = <
+   			    SC_P_ESAI0_FST_LSIO_GPIO2_IO23              0x00000060
+		    >;
+ 		};
+
+		pinctrl_gnss_dir: gnssdirgrp {
+		    fsl,pins = <
+			    SC_P_ESAI0_FSR_LSIO_GPIO2_IO22              0x00000060
+		    >;
+		};
 
 	        pinctrl_flexcan1: flexcan1grp {
         	    fsl,pins = <
