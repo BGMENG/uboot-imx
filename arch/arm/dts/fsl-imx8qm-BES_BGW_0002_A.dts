@@ -193,17 +193,29 @@
 			>;
         	};
 
-//		pinctrl_led0: led0grp{
-//			fsl,pins = <
-//				SC_P_SPDIF0_RX_LSIO_GPIO2_IO14              0x00000060
-//			>;
-//		};
-//
-//		pinctrl_led1: led1grp{
-//			fsl,pins = <
-//				SC_P_SPDIF0_TX_LSIO_GPIO2_IO15              0x00000060
-//			>;
-//		};
+		pinctrl_led0: led0grp{
+			fsl,pins = <
+				SC_P_SPDIF0_RX_LSIO_GPIO2_IO14              0x00000060
+			>;
+		};
+
+		pinctrl_led1: led1grp{
+			fsl,pins = <
+				SC_P_SPDIF0_TX_LSIO_GPIO2_IO15              0x00000060
+			>;
+		};
+
+		pinctrl_gnss_dir: gnssdirgrp {
+		    	fsl,pins = <
+			    	SC_P_ESAI0_FSR_LSIO_GPIO2_IO22              0x00000060
+		    	>;
+		};
+		
+		pinctrl_gnss_reset: gnssresetgrp {
+			fsl,pins = <
+   				SC_P_ESAI0_FST_LSIO_GPIO2_IO23              0x00000060
+			>;
+ 		};
 
 	        pinctrl_v50: v50grp{
 			fsl,pins = <
@@ -225,17 +237,17 @@
 
 	        pinctrl_gpio2: gpio2 {
 			fsl,pins = <
-	                	SC_P_SPDIF0_RX_LSIO_GPIO2_IO14              0x00000040
-			        SC_P_SPDIF0_TX_LSIO_GPIO2_IO15              0x00000040
+//	                	SC_P_SPDIF0_RX_LSIO_GPIO2_IO14              0x00000040
+//			        SC_P_SPDIF0_TX_LSIO_GPIO2_IO15              0x00000040
         	        	SC_P_SPI3_CS0_LSIO_GPIO2_IO20               0x00000040
 	                	SC_P_SPI3_SCK_LSIO_GPIO2_IO17               0x00000040
 		                SC_P_SPI3_SDI_LSIO_GPIO2_IO19               0x00000040
         		        SC_P_SPI3_SDO_LSIO_GPIO2_IO18               0x00000040
-	                	SC_P_ESAI0_FSR_LSIO_GPIO2_IO22              0x00000060
-		                SC_P_ESAI0_FST_LSIO_GPIO2_IO23              0x00000060
-        		        SC_P_ESAI0_SCKR_LSIO_GPIO2_IO24             0x00000060
-	                	SC_P_ESAI0_SCKT_LSIO_GPIO2_IO25             0x00000060
-		                SC_P_ESAI0_TX0_LSIO_GPIO2_IO26              0x00000060
+//	                	SC_P_ESAI0_FSR_LSIO_GPIO2_IO22              0x00000060
+//		                SC_P_ESAI0_FST_LSIO_GPIO2_IO23              0x00000060
+//        		        SC_P_ESAI0_SCKR_LSIO_GPIO2_IO24             0x00000060
+//	                	SC_P_ESAI0_SCKT_LSIO_GPIO2_IO25             0x00000060
+//		                SC_P_ESAI0_TX0_LSIO_GPIO2_IO26              0x00000060
         		        SC_P_ESAI0_TX1_LSIO_GPIO2_IO27              0x00000060
 	                	SC_P_ESAI0_TX2_RX3_LSIO_GPIO2_IO28          0x00000060
 		                SC_P_ESAI0_TX3_RX2_LSIO_GPIO2_IO29          0x00000060
@@ -263,17 +275,6 @@
         	    >;
 	        };
 
-		pinctrl_gnss_reset: gnssresetgrp {
-		    fsl,pins = <
-   			    SC_P_ESAI0_FST_LSIO_GPIO2_IO23              0x00000060
-		    >;
- 		};
-
-		pinctrl_gnss_dir: gnssdirgrp {
-		    fsl,pins = <
-			    SC_P_ESAI0_FSR_LSIO_GPIO2_IO22              0x00000060
-		    >;
-		};
 
 	        pinctrl_flexcan1: flexcan1grp {
         	    fsl,pins = <
