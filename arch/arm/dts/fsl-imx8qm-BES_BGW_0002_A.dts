@@ -61,30 +61,30 @@
 //                };
 //        };
 
-//	gpio {
-//		compatible = "fsl,imx35-gpio";
-//		gpio-controller;
-//		#gpio-cells = <2>;
-//		pinctrl-names = "default";
-//		pinctrl-0 = <&pinctrl_hog>;
-//		v5_0_per{
-//			label = "V5_0_per";
-//			enable-gpios = <&gpio2 24 GPIO_ACTIVE_HIGH>;
-//			default-state = "on";
-//			output-high;
-//		};
-//		v3_8_per{
-//			label = "V3_8_per";
-//			enable-gpios = <&gpio2 25 GPIO_ACTIVE_HIGH>;
-//			default-state = "on";
-//			output-high;
-//		};
-//		v3_3_per{
-//			label = "V3_3_per";
-//			enable-gpios = <&gpio2 26 GPIO_ACTIVE_HIGH>;
-//			default-state = "on";
-//			output-high;
-//		};
+	gpio {
+		compatible = "fsl,imx35-gpio";
+		gpio-controller;
+		#gpio-cells = <2>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_hog>;
+		v5_0_per{
+			label = "V5_0_per";
+			enable-gpios = <&gpio2 24 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+			output-high;
+		};
+		v3_8_per{
+			label = "V3_8_per";
+			enable-gpios = <&gpio2 25 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+			output-high;
+		};
+		v3_3_per{
+			label = "V3_3_per";
+			enable-gpios = <&gpio2 26 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+			output-high;
+		};
 //		wifi_vio_en{
 //			label = "wifi_vio_en";
 //			enable-gpios = <&gpio2 27 GPIO_ACTIVE_HIGH>;
@@ -106,12 +106,11 @@
 //		wifi_pdn{
 //			label = "wifi_pdn";
 //			enable-gpios = <&gpio2 06 GPIO_ACTIVE_HIGH>;
-////			default-state = "on";
 //			default-state = "off";
 //			output-high;
 //		};
-//	};
-//
+	};
+
 	regulators {
 		compatible = "simple-bus";
 		#address-cells = <1>;
