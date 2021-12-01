@@ -328,21 +328,6 @@ udelay(500);
 //	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 #endif
 /*-----------------------------------------------------------------------------*/
-	/* GPS LED */
-	ret = dm_gpio_lookup_name("GPIO2_18", &desc);
-	if (ret) {
-		printf("%s lookup GPIO@2_14 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	ret = dm_gpio_request(&desc, "gps_led");
-	if (ret) {
-		printf("%s request gps_led failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT );
-
 
 }
 int checkboard(void)
