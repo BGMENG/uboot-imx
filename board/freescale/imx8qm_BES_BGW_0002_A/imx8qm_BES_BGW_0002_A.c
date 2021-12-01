@@ -83,33 +83,60 @@ int board_early_init_f(void)
 }
 
 
-//#define LED_0 IMX_GPIO_NR(2, 14)
-//#define LED_1 IMX_GPIO_NR(2, 15)
-
-//#define BB_GPIO_3V3_1 IMX_GPIO_NR(4, 20)
-//#define BB_GPIO_3V3_2 IMX_GPIO_NR(4, 24)
-//#define BB_GPIO_3V3_3 IMX_GPIO_NR(4, 23)
-
 static void board_gpio_init(void)
 {
-#if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A) || defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY)
 	int ret;
 	struct gpio_desc desc;
-	/* LED 0 */
-	ret = dm_gpio_lookup_name("GPIO2_14", &desc);
+	/*--------------------------------------------------------------------------*/
+	/* V3_8_PER */
+	ret = dm_gpio_lookup_name("GPIO2_25", &desc);
 	if (ret) {
-		printf("%s lookup GPIO@2_14 failed ret = %d\n", __func__, ret);
+		printf("%s lookup GPIO@2_25 failed ret = %d\n", __func__, ret);
 		return;
 	}
 
-	ret = dm_gpio_request(&desc, "led_0");
+	ret = dm_gpio_request(&desc, "v3_8_per");
 	if (ret) {
-		printf("%s request led_0 failed ret = %d\n", __func__, ret);
+		printf("%s request v3_8_per failed ret = %d\n", __func__, ret);
 		return;
 	}
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
+	/*--------------------------------------------------------------------------*/
+	/* V3_3_PER */
+	ret = dm_gpio_lookup_name("GPIO2_26", &desc);
+	if (ret) {
+		printf("%s lookup GPIO@2_26 failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+	ret = dm_gpio_request(&desc, "v3_3_per");
+	if (ret) {
+		printf("%s request 3v3_per failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+
+	/*--------------------------------------------------------------------------*/
+	/* V5_0_PER */
+	ret = dm_gpio_lookup_name("GPIO2_24", &desc);
+	if (ret) {
+		printf("%s lookup GPIO@2_24 failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+	ret = dm_gpio_request(&desc, "v5_0_per");
+	if (ret) {
+		printf("%s request v5_0_per failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+
+	/*--------------------------------------------------------------------------*/
 	/* CELL RESET */
 	ret = dm_gpio_lookup_name("GPIO0_09", &desc);
 	if (ret) {
@@ -126,6 +153,23 @@ static void board_gpio_init(void)
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 	printf("cell_reset set\n");
 
+	/*--------------------------------------------------------------------------*/
+	/* LED 0 */
+	ret = dm_gpio_lookup_name("GPIO2_14", &desc);
+	if (ret) {
+		printf("%s lookup GPIO@2_14 failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+	ret = dm_gpio_request(&desc, "led_0");
+	if (ret) {
+		printf("%s request led_0 failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+	
+	/*--------------------------------------------------------------------------*/
 	/* LED 1 */
 	ret = dm_gpio_lookup_name("GPIO2_15", &desc);
 	if (ret) {
@@ -141,51 +185,7 @@ static void board_gpio_init(void)
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-	/* V3_8_PER */
-	ret = dm_gpio_lookup_name("GPIO2_25", &desc);
-	if (ret) {
-		printf("%s lookup GPIO@2_25 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	ret = dm_gpio_request(&desc, "v3_8_per");
-	if (ret) {
-		printf("%s request v3_8_per failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-
-	/* V3_3_PER */
-	ret = dm_gpio_lookup_name("GPIO2_26", &desc);
-	if (ret) {
-		printf("%s lookup GPIO@2_26 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	ret = dm_gpio_request(&desc, "v3_3_per");
-	if (ret) {
-		printf("%s request 3v3_per failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-
-	/* V5_0_PER */
-	ret = dm_gpio_lookup_name("GPIO2_24", &desc);
-	if (ret) {
-		printf("%s lookup GPIO@2_24 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	ret = dm_gpio_request(&desc, "v5_0_per");
-	if (ret) {
-		printf("%s request v5_0_per failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-
+	/*--------------------------------------------------------------------------*/
 	/* GNSS Reset  */
 	ret = dm_gpio_lookup_name("GPIO2_23", &desc);
 	if (ret) {
@@ -201,6 +201,7 @@ static void board_gpio_init(void)
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
+/*--------------------------------------------------------------------------*/
 #if 1
 	/* WIFI_VIO_EN */
 	ret = dm_gpio_lookup_name("GPIO2_27", &desc);
@@ -296,7 +297,6 @@ udelay(500);
 //	}
 //
 //	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-#endif
 
 }
 int checkboard(void)
