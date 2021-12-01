@@ -345,10 +345,10 @@
 
 	        pinctrl_bt_uart: bt_uartgrp {
         	    fsl,pins = <
-                	SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x00000020
-	                SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000020
-        	        SC_P_ENET0_RGMII_TXD3_DMA_UART3_RTS_B       0x06000020
-                	SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000020
+                	SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x06000060
+	                SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000040
+        	        SC_P_ENET0_RGMII_TXD3_DMA_UART3_RTS_B       0x06000060
+                	SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000060
 	            >;
         	};
 
