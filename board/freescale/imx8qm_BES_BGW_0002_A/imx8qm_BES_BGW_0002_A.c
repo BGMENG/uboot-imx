@@ -203,6 +203,22 @@ static void board_gpio_init(void)
 
 /*--------------------------------------------------------------------------*/
 #if 1
+	/* WIFI_VBAT_EN */
+	ret = dm_gpio_lookup_name("GPIO2_29", &desc);
+	if (ret) {
+		printf("%s lookup GPIO@2_29 failed ret = %d\n", __func__, ret);
+		return;
+	}
+
+	ret = dm_gpio_request(&desc, "wifi_vbat_en");
+	if (ret) {
+		printf("%s request wifi_vbat_en failed ret = %d\n", __func__, ret);
+		return;
+	}
+	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+
+udelay(1500); /* Integration Manual says monitor PG or wait 1.15 msec */
+
 	/* WIFI_VIO_EN */
 	ret = dm_gpio_lookup_name("GPIO2_27", &desc);
 	if (ret) {
@@ -218,23 +234,6 @@ static void board_gpio_init(void)
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-udelay(500);
-
-	/* WIFI_VBAT_EN */
-	ret = dm_gpio_lookup_name("GPIO2_29", &desc);
-	if (ret) {
-		printf("%s lookup GPIO@2_29 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	ret = dm_gpio_request(&desc, "wifi_vbat_en");
-	if (ret) {
-		printf("%s request wifi_vbat_en failed ret = %d\n", __func__, ret);
-		return;
-	}
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
-
-udelay(1500);
 
 	/* WIFI_1V8_EN */
 	ret = dm_gpio_lookup_name("GPIO2_28", &desc);
@@ -251,8 +250,6 @@ udelay(1500);
 
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 
-udelay(500);
-	
 	/* WIFI_PDn */
 	ret = dm_gpio_lookup_name("GPIO2_06", &desc);
 	if (ret) {
