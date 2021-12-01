@@ -163,6 +163,7 @@
 				SC_P_ESAI0_SCKR_LSIO_GPIO2_IO24         0x00000060
 				SC_P_ESAI0_SCKT_LSIO_GPIO2_IO25         0x00000060
 				SC_P_ESAI0_TX0_LSIO_GPIO2_IO26          0x00000060
+				SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000040 /* Pull down */
 			>;
 		};
 
@@ -343,14 +344,14 @@
 	            >;
         	};
 
-	        pinctrl_bt_uart: bt_uartgrp {
-        	    fsl,pins = <
-                	SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x06000060
-	                SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000040
-        	        SC_P_ENET0_RGMII_TXD3_DMA_UART3_RTS_B       0x06000060
-                	SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000060
-	            >;
-        	};
+//	        pinctrl_bt_uart: bt_uartgrp {
+//        	    fsl,pins = <
+//                	SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x06000060
+//	                SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000040
+//        	        SC_P_ENET0_RGMII_TXD3_DMA_UART3_RTS_B       0x06000060
+//                	SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000060
+//	            >;
+//        	};
 
 	        pinctrl_usdhc1: usdhc1grp {
         	    fsl,pins = <
