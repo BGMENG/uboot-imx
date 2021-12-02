@@ -131,7 +131,7 @@
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
 			gpio = <&gpio4 4 GPIO_ACTIVE_HIGH>;
-			enable-active-high;
+			enable-active-low;
 		};
 
 		reg_usdhc2_vmmc: usdhc2_vmmc {
@@ -167,7 +167,7 @@
 	                	SC_P_ESAI0_TX2_RX3_LSIO_GPIO2_IO28          0x00000060 /* WIFI V1.8 EN */
 		                SC_P_ESAI0_TX3_RX2_LSIO_GPIO2_IO29          0x00000060 /* WIFI VBAT EN */
         		        SC_P_ESAI1_SCKR_LSIO_GPIO2_IO06             0x00000060 /* WIFI PDN */
-				SC_P_USB_SS3_TC1_LSIO_GPIO4_IO04	0x00000040 /* VUSB2_EN */
+				SC_P_USB_SS3_TC1_LSIO_GPIO4_IO04	0x00000060 /* VUSB2_EN */
 			>;
 		};
 
