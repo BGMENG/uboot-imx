@@ -130,8 +130,8 @@
 			regulator-name = "usb_otg2_vbus";
 			regulator-min-microvolt = <5000000>;
 			regulator-max-microvolt = <5000000>;
-			gpio = <&gpio4 4 GPIO_ACTIVE_HIGH>;
-			enable-active-low;
+			gpio = <&gpio4 4 GPIO_ACTIVE_LOW>;
+			regulator-always-on;
 		};
 
 		reg_usdhc2_vmmc: usdhc2_vmmc {
