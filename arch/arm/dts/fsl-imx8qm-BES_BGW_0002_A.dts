@@ -167,7 +167,7 @@
 	                	SC_P_ESAI0_TX2_RX3_LSIO_GPIO2_IO28          0x00000060 /* WIFI V1.8 EN */
 		                SC_P_ESAI0_TX3_RX2_LSIO_GPIO2_IO29          0x00000060 /* WIFI VBAT EN */
         		        SC_P_ESAI1_SCKR_LSIO_GPIO2_IO06             0x00000060 /* WIFI PDN */
-				SC_P_USB_SS3_TC1_LSIO_GPIO4_IO04	0x00000060 /* VUSB2_EN */
+//				SC_P_USB_SS3_TC1_LSIO_GPIO4_IO04	0x00000060 /* VUSB2_EN */
 			>;
 		};
 
@@ -333,12 +333,6 @@
 	            >;
 		};
 
-	        pinctrl_usbotg2: usbotg2 {
-        	    fsl,pins = <
-                	SC_P_USB_SS3_TC1_CONN_USB_OTG2_PWR
-	            >;
-        	};
-
 	        pinctrl_lpuart1: lpuart1grp {
         	    fsl,pins = <
                 	SC_P_UART1_CTS_B_DMA_UART1_CTS_B            0x06000020
@@ -464,19 +458,6 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_i2c0>;
 	status = "okay";
-
-//	/* U-Blox NEO-M8L GNSS (Does the NEO-M8 driver work for this?) */
-//	gnss@42 {
-//		compatible = "u-blox,neo-m8", "fsl,imx35-gpio";
-//		reg = <0x42>; // reg = DDC (i2c) slave address
-//		vcc-supply = <&pinctrl_v33>;
-//
-//		gpio-controller;
-//		#gpio-cells = <2>;
-//		pinctrl-0 = <&pinctrl_gnss_reset>;
-//		pinctrl-1 = <&pinctrl_gnss_dir>;
-//		reset-gpios = <&pinctrl_gnss_reset>;
-//	};
 };
 
 &i2c1 {
@@ -498,14 +479,6 @@
 	pinctrl-names = "default", "gpio";
 	pinctrl-0 = <&pinctrl_i2c4>;
 	status = "okay";
-	
-	/* The lsm6dsl uses the lsm6dsx driver */
-//	lsm6dsl@6b{
-//		compatible = "st,lsm6dsl";
-//		reg = <0x6B>;
-//		interrupt-parent = <&gpio4>;
-//		interrupts = <17 IRQ_TYPE_LEVEL_HIGH>, <18 IRQ_TYPE_LEVEL_HIGH>;
-//	};
 };
 
 &lpuart0 { /* console */
