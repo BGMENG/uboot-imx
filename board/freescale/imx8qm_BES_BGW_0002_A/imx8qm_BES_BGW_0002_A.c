@@ -266,19 +266,19 @@ udelay(1500); /* Integration Manual says monitor PG or wait 1.15 msec */
 	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 	
 	/* VUSB2_EN */
-	ret = dm_gpio_lookup_name("GPIO4_04", &desc);
-	if (ret) {
-		printf("%s lookup GPIO@4_04 failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	ret = dm_gpio_request(&desc, "vusb2_en");
-	if (ret) {
-		printf("%s request vusb2_en failed ret = %d\n", __func__, ret);
-		return;
-	}
-
-	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
+//	ret = dm_gpio_lookup_name("GPIO4_04", &desc);
+//	if (ret) {
+//		printf("%s lookup GPIO@4_04 failed ret = %d\n", __func__, ret);
+//		return;
+//	}
+//
+//	ret = dm_gpio_request(&desc, "vusb2_en");
+//	if (ret) {
+//		printf("%s request vusb2_en failed ret = %d\n", __func__, ret);
+//		return;
+//	}
+//
+//	dm_gpio_set_dir_flags(&desc, GPIOD_IS_OUT | GPIOD_IS_OUT_ACTIVE);
 #endif
 	/* enable LVDS SAS boards */
 //	ret = dm_gpio_lookup_name("GPIO1_6", &desc);
