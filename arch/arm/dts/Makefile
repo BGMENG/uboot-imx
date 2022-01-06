@@ -831,6 +831,7 @@ dtb-$(CONFIG_ARCH_MX7ULP) += imx7ulp-com.dtb \
 dtb-$(CONFIG_ARCH_IMX8) += \
 	fsl-imx8qm-apalis.dtb \
 	fsl-imx8qm-BES_BGW_0002_A.dtb \
+	fsl-imx8qm-besbgw0002b.dtb \
 	fsl-imx8qm-mek.dtb \
 	fsl-imx8qm-ddr4-val.dtb \
 	fsl-imx8qm-lpddr4-val.dtb \

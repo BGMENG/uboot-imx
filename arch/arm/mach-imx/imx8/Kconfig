@@ -102,6 +102,15 @@ config TARGET_IMX8QM_BES_BGW_0002_A
 	select ARCH_MISC_INIT
 	select SPL_CRYPTO_SUPPORT if SPL
 
+config TARGET_IMX8QM_BESBGW0002B
+	bool "Support i.MX8QM BESBGW0002B board"
+	select BOARD_LATE_INIT
+	select IMX8QM
+	select FSL_CAAM
+	select FSL_BLOB
+	select ARCH_MISC_INIT
+	select SPL_CRYPTO_SUPPORT if SPL
+
 config TARGET_IMX8QM_MEK
 	bool "Support i.MX8QM MEK board"
 	select BOARD_LATE_INIT
@@ -201,6 +210,7 @@ config TARGET_IMX8DXL_DDR3_EVK
 endchoice
 
 source "board/freescale/imx8qm_BES_BGW_0002_A/Kconfig"
+source "board/freescale/imx8qm_besbgw0002b/Kconfig"
 source "board/freescale/imx8qm_mek/Kconfig"
 source "board/freescale/imx8qxp_mek/Kconfig"
 source "board/freescale/imx8qm_val/Kconfig"

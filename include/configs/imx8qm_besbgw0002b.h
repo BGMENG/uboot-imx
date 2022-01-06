@@ -3,8 +3,8 @@
  * Copyright 2018 NXP
  */
 
-#ifndef __IMX8QM_BES_BGW_0002_A_H
-#define __IMX8QM_BES_BGW_0002_A_H
+#ifndef __IMX8QM_BESBGW0002B_H
+#define __IMX8QM_BESBGW0002B_H
 
 #include <linux/sizes.h>
 #include <linux/stringify.h>
@@ -28,7 +28,7 @@
 #define CONFIG_SPL_STACK		0x013fff0
 #define CONFIG_SPL_BSS_START_ADDR      0x00130000
 #define CONFIG_SPL_BSS_MAX_SIZE		0x1000	/* 4 KB */
-#ifdef CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY
+#ifdef CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY
 #define CONFIG_SERIAL_LPUART_BASE	0x5a080000	/* use UART2 */
 #define CONFIG_SYS_SPL_MALLOC_START	0xC2200000
 #else
@@ -44,7 +44,7 @@
 
 #endif
 
-#ifdef CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY
+#ifdef CONFIG_TARGET_IMX8QM_BESBGW0002B_A53_ONLY
 #define IMX_HDMI_FIRMWARE_LOAD_ADDR (CONFIG_SYS_SDRAM_BASE + SZ_64M)
 #define IMX_HDMITX_FIRMWARE_SIZE 0x20000
 #define IMX_HDMIRX_FIRMWARE_SIZE 0x20000
@@ -61,7 +61,7 @@
 #define USDHC1_BASE_ADDR                0x5B010000
 #define USDHC2_BASE_ADDR                0x5B020000
 
-#ifndef CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY
+#ifndef CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY
 #define CONFIG_PCIE_IMX
 #define CONFIG_CMD_PCI
 #define CONFIG_PCI_SCAN_SHOW
@@ -94,11 +94,11 @@
 
 #define JAILHOUSE_ENV \
 	"jh_mmcboot=" \
-		"setenv fdt_file imx8qm-BES_BGW_0002_A-root.dtb;"\
+		"setenv fdt_file imx8qm-besbgw0002b-root.dtb;"\
 		"setenv boot_os 'scu_rm dtb ${fdt_addr}; booti ${loadaddr} - ${fdt_addr};'; " \
 		"run mmcboot; \0" \
 	"jh_netboot=" \
-		"setenv fdt_file imx8qm-BES_BGW_0002_A-root.dtb;"\
+		"setenv fdt_file imx8qm-besbgw0002b-root.dtb;"\
 		"setenv boot_os 'scu_rm dtb ${fdt_addr}; booti ${loadaddr} - ${fdt_addr};'; " \
 		"run netboot; \0"
 
@@ -108,7 +108,7 @@
             "xenlinux_bootargs= \0" \
             "xenlinux_console=hvc0 earlycon=xen\0" \
             "xenlinux_addr=0x9e000000\0" \
-            "dom0fdt_file=imx8qm-BES_BGW_0002_A-dom0.dtb\0" \
+            "dom0fdt_file=imx8qm-besbgw0002b-dom0.dtb\0" \
             "xenboot_common=" \
                 "${get_cmd} ${loadaddr} xen;" \
                 "${get_cmd} ${fdt_addr} ${dom0fdt_file};" \
@@ -152,7 +152,7 @@
 #define MFG_NAND_PARTITION ""
 #endif
 
-#ifdef CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY
+#ifdef CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY
 #define HDP_LOAD_ENV
 #define INITRD_ADDR_ENV "initrd_addr=0xC3100000\0"
 #else
@@ -277,7 +277,7 @@
 	   "else booti ${loadaddr} - ${fdt_addr}; fi"
 
 /* Link Definitions */
-#ifdef CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY
+#ifdef CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY
 	#define CONFIG_LOADADDR			0xC0280000
 	#define CONFIG_SYS_LOAD_ADDR		CONFIG_LOADADDR
 	#define CONFIG_SYS_INIT_SP_ADDR		0xC0200000
@@ -287,12 +287,12 @@
 	#define CONFIG_SYS_INIT_SP_ADDR		0x80200000
 #endif
 
-#if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY)
+#if defined(CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY)
 	#define FDT_ADDR	"fdt_addr=0xC3000000\0"
-	#define FDT_FILE	"fdt_file=imx8qm-BES_BGW_0002_A-cockpit-a72.dtb\0"
-#elif defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY)
+	#define FDT_FILE	"fdt_file=imx8qm-besbgw0002b-cockpit-a72.dtb\0"
+#elif defined(CONFIG_TARGET_IMX8QM_BESBGW0002B_A53_ONLY)
 	#define FDT_ADDR	"fdt_addr=0x83000000\0"
-	#define FDT_FILE	"fdt_file=imx8qm-BES_BGW_0002_A-cockpit-a53.dtb\0"
+	#define FDT_FILE	"fdt_file=imx8qm-besbgw0002b-cockpit-a53.dtb\0"
 #else
 	#define FDT_ADDR	"fdt_addr=0x83000000\0"
 	#define FDT_FILE	"fdt_file=undefined\0"
@@ -309,10 +309,10 @@
 #define CONFIG_SYS_MMC_IMG_LOAD_PART	1
 
 /* On LPDDR4 board, USDHC1 is for eMMC, USDHC2 is for SD on CPU board */
-#if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY)
+#if defined(CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY)
 	#define CONFIG_SYS_MMC_ENV_DEV		0  /* USDHC1 */
 	#define CONFIG_MMCROOT			"/dev/mmcblk0p2"  /* USDHC1 */
-#elif defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY)
+#elif defined(CONFIG_TARGET_IMX8QM_BESBGW0002B_A53_ONLY)
 	#define CONFIG_SYS_MMC_ENV_DEV		1  /* USDHC2 */
 	#define CONFIG_MMCROOT			"/dev/mmcblk1p2"  /* USDHC2 */
 #else
@@ -321,7 +321,7 @@
 #endif
 #define CONFIG_SYS_FSL_USDHC_NUM	2
 
-#if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY)
+#if defined(CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY)
 #define CONFIG_CONSOLE "console=ttyLP2\0"
 #define SPLASH_IMAGE_ADDR	"splashimage=0xde000000\0"
 #else
@@ -333,13 +333,13 @@
 #define CONFIG_SYS_MALLOC_LEN		((CONFIG_ENV_SIZE + (32 * 1024)) * 1024)
 
 #define CONFIG_NR_DRAM_BANKS		4
-#if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY)
+#if defined(CONFIG_TARGET_IMX8QM_BESBGW0002B_A53_ONLY)
 #define CONFIG_SYS_SDRAM_BASE		0x80000000
 #define PHYS_SDRAM_1			0x80000000
 #define PHYS_SDRAM_2			0x880000000
 #define PHYS_SDRAM_1_SIZE		0x40000000	/* 1 GB */
 #define PHYS_SDRAM_2_SIZE		0x80000000	/* 2 GB */
-#elif defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY)
+#elif defined(CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY)
 #define CONFIG_SYS_SDRAM_BASE		0xC0000000
 #define PHYS_SDRAM_1			0xC0000000
 #define PHYS_SDRAM_2			0x900000000
@@ -400,12 +400,12 @@
 #endif
 
 #if defined(CONFIG_ANDROID_SUPPORT)
-#include "imx8qm_BES_BGW_0002_A_android.h"
+#include "imx8qm_besbgw0002b_android.h"
 #elif defined (CONFIG_ANDROID_AUTO_SUPPORT)
-#include "imx8qm_BES_BGW_0002_A_android_auto.h"
+#include "imx8qm_besbgw0002b_android_auto.h"
 #elif defined(CONFIG_IMX8_TRUSTY_XEN)
-#include "imx8qm_BES_BGW_0002_A_trusty_xen.h"
+#include "imx8qm_besbgw0002b_trusty_xen.h"
 #endif
 
 
-#endif /* __IMX8QM_BES_BGW_0002_A_H */
+#endif /* __IMX8QM_BESBGW0002B_H */

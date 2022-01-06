@@ -8,8 +8,8 @@
 #include "fsl-imx8qm.dtsi"
 
 / {
-	model = "NXP i.MX8QM BES_BGW_0002_A";
-	compatible = "fsl,imx8qm-BES_BGW_0002_A", "fsl,imx8qm";
+	model = "NXP i.MX8QM BESBGW0002B";
+	compatible = "fsl,imx8qm-besbgw0002b", "fsl,imx8qm";
 
 	chosen {
 		bootargs = "console=ttyLP0,115200 earlycon";
@@ -47,7 +47,7 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_hog>;
 
-	imx8qm-BES_BGW_0002_A {
+	imx8qm-besbgw0002b {
 		pinctrl_hog: hoggrp{
 			fsl,pins = <
 				SC_P_M40_GPIO0_01_LSIO_GPIO0_IO09           0x00000020 /* CELL_RESET_3V3 */
@@ -215,37 +215,12 @@
 	            >;
         	};
 
-	        pinctrl_lpuart0: lpuart0grp { /* USB BRIDGE */
+	        pinctrl_lpuart0: lpuart0grp {
         	    fsl,pins = <
                 	SC_P_UART0_RX_DMA_UART0_RX                  0x06000020
 	                SC_P_UART0_TX_DMA_UART0_TX                  0x06000020
         	    >;
 	        };
-	        
-		pinctrl_lpuart1: lpuart1grp { /* CELL */
-        	    fsl,pins = <
-                	SC_P_UART1_CTS_B_DMA_UART1_CTS_B            0x06000020
-	                SC_P_UART1_RTS_B_DMA_UART1_RTS_B            0x06000020
-        	        SC_P_UART1_RX_DMA_UART1_RX                  0x06000020
-                	SC_P_UART1_TX_DMA_UART1_TX                  0x06000020
-	            >;
-        	};
-
-	        pinctrl_lpuart2: lpuart2grp { /* GNSS */
-        	    fsl,pins = <
-                	SC_P_LVDS0_I2C1_SDA_DMA_UART2_RX            0x06000020
-	                SC_P_LVDS0_I2C1_SCL_DMA_UART2_TX            0x06000020
-        	    >;
-	        };
-
-		pinctrl_bt_uart: bt_uartgrp { /* BLUETOOTH */
-        	    fsl,pins = <
-                	SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x06000060
-	                SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000040
-     	        	SC_P_ENET0_RGMII_TXD3_DMA_UART3_RTS_B       0x06000060
-                	SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000060
-	            >;
-        	};
 
 		pinctrl_typec: typecgrp {
         	    fsl,pins = <
@@ -254,6 +229,24 @@
                 	SC_P_QSPI1A_DATA0_LSIO_GPIO4_IO26	0x00000021
 	            >;
 		};
+
+	        pinctrl_lpuart1: lpuart1grp {
+        	    fsl,pins = <
+                	SC_P_UART1_CTS_B_DMA_UART1_CTS_B            0x06000020
+	                SC_P_UART1_RTS_B_DMA_UART1_RTS_B            0x06000020
+        	        SC_P_UART1_RX_DMA_UART1_RX                  0x06000020
+                	SC_P_UART1_TX_DMA_UART1_TX                  0x06000020
+	            >;
+        	};
+
+	        pinctrl_bt_uart: bt_uartgrp {
+        	    fsl,pins = <
+                	SC_P_ENET0_RGMII_RXD3_DMA_UART3_RX          0x06000060
+	                SC_P_ENET0_RGMII_TXD2_DMA_UART3_TX          0x00000040
+     	        	SC_P_ENET0_RGMII_TXD3_DMA_UART3_RTS_B       0x06000060
+                	SC_P_ENET0_RGMII_RXC_DMA_UART3_CTS_B        0x06000060
+	            >;
+        	};
 
 		pinctrl_usbotg2: usbotg2 {
 			fsl,pins = <
@@ -401,23 +394,17 @@
 	status = "okay";
 };
 
-&lpuart1 { /* cell */
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_lpuart1>;
-	status = "okay";
-};
+//&lpuart1 { /* cell */
+//	pinctrl-names = "default";
+//	pinctrl-0 = <&pinctrl_lpuart1>;
+//	status = "okay";
+//};
 
-&lpuart2 { /* gnss */
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_lpuart2>;
-	status = "okay";
-};
-
-&lpuart3 { /* bt */
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_bt_uart>;
-	status = "okay";
-};
+//&lpuart3 { /* bt */
+//	pinctrl-names = "default";
+//	pinctrl-0 = <&pinctrl_bt_uart>;
+//	status = "okay";
+//};
 
 &tsens {
 	tsens-num = <6>;
