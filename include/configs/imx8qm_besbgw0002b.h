@@ -349,7 +349,7 @@
 #define CONFIG_SYS_SDRAM_BASE		0x80000000
 #define PHYS_SDRAM_1			0x80000000
 #define PHYS_SDRAM_2			0x880000000
-#define PHYS_SDRAM_1_SIZE		0x80000000 	/* 2 GB */
+#define PHYS_SDRAM_1_SIZE		0x80000000	/* 2 GB */
 #define PHYS_SDRAM_2_SIZE		0x100000000	/* 4 GB */
 #endif
 
@@ -381,7 +381,7 @@
 
 #endif
 
-#define CONFIG_USB_MAX_CONTROLLER_COUNT 0
+#define CONFIG_USB_MAX_CONTROLLER_COUNT 2
 
 /* USB OTG controller configs */
 #ifdef CONFIG_USB_EHCI_HCD

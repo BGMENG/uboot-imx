@@ -4,8 +4,8 @@
  * SPDX-License-Identifier:	GPL-2.0+
  */
 
-#ifndef IMX8QM_MEK_ANDROID_H
-#define IMX8QM_MEK_ANDROID_H
+#ifndef IMX8QM_BESBGW0002B_ANDROID_H
+#define IMX8QM_BESBGW0002B_ANDROID_H
 
 #define CONFIG_USB_GADGET_VBUS_DRAW	2
 
@@ -32,4 +32,4 @@
 
 #endif
 
-#endif /* IMX8QM_MEK_ANDROID_H */
+#endif /* IMX8QM_BESBGW0002B_ANDROID_H */
