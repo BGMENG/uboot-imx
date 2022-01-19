@@ -427,7 +427,7 @@ int board_late_init(void)
 //		if (m4_booted)
 //			env_set("fdt_file", "imx8qm-BES_BGW_0002_A-rpmsg.dtb");
 //		else
-			env_set("fdt_file", "imx8qm-BES_BGW_0002_A.dtb");
+			env_set("fdt_file", "imx8qm-besbgw0002b.dtb");
 //#endif
 	}
 

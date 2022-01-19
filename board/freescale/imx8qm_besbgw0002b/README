@@ -39,7 +39,7 @@ $ cp imx-sc-firmware-0.7/mx8qm-BES_BGW_0002_A-scfw-tcm.bin	.
 
 Build U-Boot
 ============
-$ make imx8qm_BES_BGW_0002_A_defconfig
+$ make imx8qm_besbgw0002b_defconfig
 $ make flash.bin
 
 Flash the binary into the SD card
