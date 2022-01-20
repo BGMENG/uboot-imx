@@ -35,7 +35,7 @@ $ cp u-boot/u-boot.bin .
 Copy the following firmwares U-Boot folder :
 
 $ cp firmware-imx-7.6/firmware/seco/ahab-container.img .
-$ cp imx-sc-firmware-0.7/mx8qm-BES_BGW_0002_A-scfw-tcm.bin	.
+$ cp imx-sc-firmware-0.7/mx8qm-besbgw0002b-scfw-tcm.bin	.
 
 Build U-Boot
 ============
