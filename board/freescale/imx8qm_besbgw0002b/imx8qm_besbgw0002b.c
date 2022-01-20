@@ -415,9 +415,9 @@ int board_late_init(void)
 	env_set("sec_boot", "yes");
 #endif
 
-	fdt_file = env_get("fdt_file");
-
-	if (fdt_file && !strcmp(fdt_file, "undefined")) {
+//	fdt_file = env_get("fdt_file");
+//
+//	if (fdt_file && !strcmp(fdt_file, "undefined")) {
 //#if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY)
 //		env_set("fdt_file", "imx8qm-BES_BGW_0002_A-cockpit-ca53.dtb");
 //#elif defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY)
@@ -429,7 +429,7 @@ int board_late_init(void)
 //		else
 			env_set("fdt_file", "imx8qm-besbgw0002b.dtb");
 //#endif
-	}
+//	}
 
 #ifdef CONFIG_ENV_IS_IN_MMC
 	board_late_mmc_env_init();
