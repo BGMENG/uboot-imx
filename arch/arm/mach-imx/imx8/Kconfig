@@ -220,6 +220,7 @@ endchoice
 
 source "board/freescale/imx8qm_BES_BGW_0002_A/Kconfig"
 source "board/freescale/imx8qm_besbgw0002b/Kconfig"
+source "board/freescale/imx8qm_yamaha/Kconfig"
 source "board/freescale/imx8qm_mek/Kconfig"
 source "board/freescale/imx8qxp_mek/Kconfig"
 source "board/freescale/imx8qm_val/Kconfig"
