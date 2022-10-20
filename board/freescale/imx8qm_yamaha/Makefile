@@ -4,5 +4,5 @@
 # SPDX-License-Identifier:	GPL-2.0+
 #
 
-obj-y += imx8qm_besbgw0002b.o
+obj-y += imx8qm_yamaha.o
 obj-$(CONFIG_SPL_BUILD) += spl.o
