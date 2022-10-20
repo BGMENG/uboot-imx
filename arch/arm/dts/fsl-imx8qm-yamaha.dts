@@ -8,8 +8,8 @@
 #include "fsl-imx8qm.dtsi"
 
 / {
-	model = "NXP i.MX8QM BESBGW0002B";
-	compatible = "fsl,imx8qm-besbgw0002b", "fsl,imx8qm";
+	model = "NXP i.MX8QM YAMAHA";
+	compatible = "fsl,imx8qm-yamaha", "fsl,imx8qm";
 
 	chosen {
 		bootargs = "console=ttyLP0,115200 earlycon";
@@ -47,7 +47,7 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_hog>;
 
-	imx8qm-besbgw0002b {
+	imx8qm-yamaha {
 		pinctrl_hog: hoggrp{
 			fsl,pins = <
 				SC_P_M40_GPIO0_01_LSIO_GPIO0_IO09           0x00000020 /* CELL_RESET_3V3 */

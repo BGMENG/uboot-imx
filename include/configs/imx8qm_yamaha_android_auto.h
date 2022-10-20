@@ -4,8 +4,8 @@
  * SPDX-License-Identifier:	GPL-2.0+
  */
 
-#ifndef IMX8QM_BESBGW0002B_ANDROID_AUTO_H
-#define IMX8QM_BESBGW0002B_ANDROID_AUTO_H
+#ifndef IMX8QM_YAMAHA_ANDROID_AUTO_H
+#define IMX8QM_YAMAHA_ANDROID_AUTO_H
 
 #define CONFIG_USB_GADGET_VBUS_DRAW	2
 #define CONFIG_SKIP_RESOURCE_CHECKING
@@ -47,7 +47,7 @@
 #endif
 
 #if defined(CONFIG_XEN)
-#include "imx8qm_besbgw0002b_android_auto_xen.h"
+#include "imx8qm_yamaha_android_auto_xen.h"
 #endif
 
-#endif /* IMX8QM_BESBGW0002B_ANDROID_AUTO_H */
+#endif /* IMX8QM_YAMAHA_ANDROID_AUTO_H */

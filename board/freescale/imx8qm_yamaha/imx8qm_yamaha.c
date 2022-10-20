@@ -33,7 +33,7 @@ DECLARE_GLOBAL_DATA_PTR;
 #define UART_PAD_CTRL	((SC_PAD_CONFIG_OUT_IN << PADRING_CONFIG_SHIFT) | (SC_PAD_ISO_OFF << PADRING_LPCONFIG_SHIFT) \
 						| (SC_PAD_28FDSOI_DSE_DV_HIGH << PADRING_DSE_SHIFT) | (SC_PAD_28FDSOI_PS_PU << PADRING_PULL_SHIFT))
 
-#ifdef CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY
+#ifdef CONFIG_TARGET_IMX8QM_YAMAHA_A72_ONLY
 static iomux_cfg_t uart2_pads[] = {
 	SC_P_UART0_RTS_B | MUX_MODE_ALT(2) | MUX_PAD_CTRL(UART_PAD_CTRL),
 	SC_P_UART0_CTS_B | MUX_MODE_ALT(2) | MUX_PAD_CTRL(UART_PAD_CTRL),
@@ -47,7 +47,7 @@ static iomux_cfg_t uart0_pads[] = {
 
 static void setup_iomux_uart(void)
 {
-#ifdef CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY
+#ifdef CONFIG_TARGET_IMX8QM_YAMAHA_A72_ONLY
 	imx8_iomux_setup_multiple_pads(uart2_pads, ARRAY_SIZE(uart2_pads));
 #else
 	imx8_iomux_setup_multiple_pads(uart0_pads, ARRAY_SIZE(uart0_pads));
@@ -65,7 +65,7 @@ int board_early_init_f(void)
 		return 0;
 	}
 
-#ifdef CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY
+#ifdef CONFIG_TARGET_IMX8QM_YAMAHA_A72_ONLY
 	/* Set UART2 clock root to 80 MHz */
 	ret = sc_pm_setup_uart(SC_R_UART_2, rate);
 	if (ret)
@@ -75,7 +75,7 @@ int board_early_init_f(void)
 	ret = sc_pm_setup_uart(SC_R_UART_0, rate);
 	if (ret)
 		return ret;
-#endif	/* CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY */
+#endif	/* CONFIG_TARGET_IMX8QM_YAMAHA_A72_ONLY */
 
 	setup_iomux_uart();
 
@@ -313,7 +313,7 @@ udelay(1500); /* Integration Manual says monitor PG or wait 1.15 msec */
 }
 int checkboard(void)
 {
-	puts("Board: iMX8QM BESBGW0002B\n");
+	puts("Board: iMX8QM YAMAHA\n");
 
 	print_bootinfo();
 
@@ -343,7 +343,7 @@ int board_init(void)
 void board_quiesce_devices(void)
 {
 	const char *power_on_devices[] = {
-#ifdef CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY
+#ifdef CONFIG_TARGET_IMX8QM_YAMAHA_A72_ONLY
 		"dma_lpuart2",
 		"PD_UART2_TX",
 		"PD_UART2_RX",
@@ -399,14 +399,14 @@ extern uint32_t _end_ofs;
 int board_late_init(void)
 {
 	char *fdt_file;
-//#if !defined(CONFIG_TARGET_IMX8QM_BESBGW0002B_A53_ONLY) && !defined(CONFIG_TARGET_IMX8QM_BESBGW0002B_A72_ONLY)
+//#if !defined(CONFIG_TARGET_IMX8QM_YAMAHA_A53_ONLY) && !defined(CONFIG_TARGET_IMX8QM_YAMAHA_A72_ONLY)
 //	bool m4_booted;
 //#endif
 
 	build_info();
 
 #ifdef CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG
-	env_set("board_name", "BESBGW0002B");
+	env_set("board_name", "YAMAHA");
 	env_set("board_rev", "iMX8QM");
 #endif
 
@@ -415,21 +415,7 @@ int board_late_init(void)
 	env_set("sec_boot", "yes");
 #endif
 
-//	fdt_file = env_get("fdt_file");
-//
-//	if (fdt_file && !strcmp(fdt_file, "undefined")) {
-//#if defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A53_ONLY)
-//		env_set("fdt_file", "imx8qm-BES_BGW_0002_A-cockpit-ca53.dtb");
-//#elif defined(CONFIG_TARGET_IMX8QM_BES_BGW_0002_A_A72_ONLY)
-//		env_set("fdt_file", "imx8qm-BES_BGW_0002_A-cockpit-ca72.dtb");
-//#else
-//		m4_booted = m4_parts_booted();
-//		if (m4_booted)
-//			env_set("fdt_file", "imx8qm-BES_BGW_0002_A-rpmsg.dtb");
-//		else
-			env_set("fdt_file", "imx8qm-besbgw0002b.dtb");
-//#endif
-//	}
+	env_set("fdt_file", "imx8qm-yamaha.dtb");
 
 #ifdef CONFIG_ENV_IS_IN_MMC
 	board_late_mmc_env_init();
