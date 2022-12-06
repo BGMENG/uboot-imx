@@ -1,0 +1,6 @@
+i.MX8QM Custom BOARD
+M:	E Burley <eburley@bgmeng.com>
+S:	Maintained
+F:	board/freescale/imx8qm_yamaha/
+F:	include/configs/imx8qm_yamaha.h
+F:	configs/imx8qm_yamaha_defconfig

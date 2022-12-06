@@ -12,6 +12,8 @@
 #include "snvs_security_sc_conf_8qm_mek.h"
 #elif CONFIG_TARGET_IMX8QM_BESBGW0002B
 #include "snvs_security_sc_conf_8qm_besbgw0002b.h"
+#elif CONFIG_TARGET_IMX8QM_YAMAHA
+#include "snvs_security_sc_conf_8qm_yamaha.h"
 #elif CONFIG_TARGET_IMX8QXP_MEK
 #include "snvs_security_sc_conf_8qxp_mek.h"
 #elif CONFIG_TARGET_IMX8DXL_EVK

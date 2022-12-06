@@ -1,0 +1,17 @@
+if TARGET_IMX8QM_YAMAHA
+
+config SYS_BOARD
+	default "imx8qm_yamaha"
+
+config SYS_VENDOR
+	default "freescale"
+
+config SYS_CONFIG_NAME
+	default "imx8qm_yamaha"
+
+config IMX_CONTAINER_CFG
+	default "board/freescale/imx8qm_yamaha/uboot-container.cfg"
+
+source "board/freescale/common/Kconfig"
+
+endif
